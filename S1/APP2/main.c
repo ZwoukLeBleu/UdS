@@ -4,3 +4,8 @@ struct test {
     int b;
     matrix[a][b];
 }
+
+int main(){
+
+    return 0;
+}
