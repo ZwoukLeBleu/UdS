@@ -5,7 +5,7 @@
 #include <stdio.h>
 #include "main.h"
 
-#define MAX_SIN_N 3
+#define MAX_SIN_N 10
 
 
 struct matrixS {
@@ -26,6 +26,8 @@ int charFind(char a, char str[]){
     }
     return -1;
 }
+
+
 
 //detection de palindrome
 //WIP
@@ -54,16 +56,21 @@ int power(int x, int p){
     for (p; p > 0; p--){
         t *= x;
     }
+    return t;
 }
+
 
 //sin ~= x - x3/3! + x5/5!
 //WIP
 float sinNear(int x){
-    int i;
-    int t = 0;
-    for (i = 0; i < MAX_SIN_N; i+2){
-        t += ((-1)^(i))*((x^i)/factorial(i));
+    float t = 0;
+    for (int i = 1; i < 20; i+=2){
+        //printf(" %d",i);
+        t += power(-1,i)*(power(x,i)/factorial(i));
+        printf(" %d",t);
     }
+    return t;
+    
 }
 
 /*void matrixAdd(struct matrixS m1, struct matrixS m2){
@@ -87,10 +94,10 @@ int main() {
     //int wt = palindromeCheck(greets, sizeof(greets));
     //printf("%d",wt);
 
-    //float test = sinNear(3);
-    //printf("%.6f", test);
-    int g = power(5,4);
-    printf("%d", g);
+    float test = sinNear(3);
+    printf("%.6f", test);
+    //int g = power(5,4);
+    //printf("%d", g);
 
    printf("\n");
    return 0;
