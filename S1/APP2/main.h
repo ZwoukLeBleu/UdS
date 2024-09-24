@@ -3,7 +3,9 @@
 
 
 
-char charFind(char a, char str[]);
+int charFind(char a, char str[]);
 int palindromeCheck(char str[], int p);
+int factorial(int x);
+//float sinNear(int x);
 
 #endif
