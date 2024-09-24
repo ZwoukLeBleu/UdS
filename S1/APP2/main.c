@@ -7,17 +7,13 @@
 
 #define MAX_SIN_N 3
 
-/*typedef int bool;
-enum {
-    false,
-    true
-};*/
 
 struct matrixS {
         int n;
         int m;
-        matrix[99][99];
+        //matrix[99][99];
 };
+//typedef struct 
 
 // recherche d’un caractère 
 //KINDA DONE
@@ -51,7 +47,13 @@ int factorial(int x){
         return t;
     }
     else { return -1; }
-    
+}
+
+int power(int x, int p){
+    int t = 1;
+    for (p; p > 0; p--){
+        t *= x;
+    }
 }
 
 //sin ~= x - x3/3! + x5/5!
@@ -64,24 +66,31 @@ float sinNear(int x){
     }
 }
 
-int matrixAdd(){
-
-}
-
+/*void matrixAdd(struct matrixS m1, struct matrixS m2){
+    if (m1.m == m2.m && m1.n == m2.n){
+        struct matrixS m3 {m = }
+        for (int i =0; i < m1.m; i++){
+            for (int j =0; j < m1.n; i++){
+                
+            }
+        }
+        
+    }
+}*/
 
 int main() {
 
    //struct test t1 = {1,2,'g'};
    //putchar(t1.c);
-    
    //putchar(charFinder('E', greets));
     //char greets[] = "TENET";
     //int wt = palindromeCheck(greets, sizeof(greets));
     //printf("%d",wt);
 
-    float test = sinNear(3);
-    printf("%.6f", test);
-    //printf("%d", test);
+    //float test = sinNear(3);
+    //printf("%.6f", test);
+    int g = power(5,4);
+    printf("%d", g);
 
    printf("\n");
    return 0;
