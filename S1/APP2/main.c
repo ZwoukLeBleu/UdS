@@ -85,7 +85,7 @@ float sinNear(float x){
     return t;
 }
 
-//sin ~= 1 - x2/2! + x4/5!
+//sin ~= 1 - x2/2! + x4/4!
 //ALMOST DONE, NOT OPTIMISED. RETURNS NEGATIVE OF EXPECTED ANSWER ?
 float cosNear(float x){
     float t = 0;
