@@ -27,7 +27,7 @@ typedef struct  {
 //KINDA DONE
 int charFind(char a, char str[]){
     int i;
-    for (i = 0; i < strLength(str); i++) { //TODO: fix gcc qui chialle sur sizeof(char[])
+    for (i = 0; i < strLength(str); i++) {
         if (str[i] == a){
             return i;
         }
@@ -44,13 +44,12 @@ int palindromeRecur(char string[], int i, int j){
 }
 
 int strLength(char *string){
-    for(int i=0; i<10;i++){
+    for(int i=0;;i++){
         if (string[i] == '\0'){
             //printf("%d", i);
             return i;
         }
     }
-    
 }
 
 int factorial(int x){
@@ -113,7 +112,7 @@ void matrixAdd(matrixS m1, matrixS m2){
 
 int main() {
 
-    char gaming[] = "RACECAR\0";
+    char gaming[] = "RACECWAdfwahuofwajhfwajhbfwbjhhlaigkkkAR\0";
     int wtf = palindromeRecur(gaming, 0, 7-1); 
     int test = strLength(gaming);
     printf("%i", test);
