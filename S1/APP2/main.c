@@ -24,10 +24,10 @@ typedef struct  {
 //typedef struct 
 
 // recherche d’un caractère 
-//KINDA DONE
+//DONE
 int charFind(char a, char str[]){
     int i;
-    for (i = 0; i < strLength(str); i++) { //TODO: fix gcc qui chialle sur sizeof(char[])
+    for (i = 0; i < strLength(str); i++) { 
         if (str[i] == a){
             return i;
         }
