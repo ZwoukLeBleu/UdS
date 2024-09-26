@@ -24,7 +24,7 @@ typedef struct  {
 //typedef struct 
 
 // recherche d’un caractère 
-//KINDA DONE
+//DONE
 int charFind(char a, char str[]){
     int i;
     for (i = 0; i < strLength(str); i++) {
@@ -84,7 +84,7 @@ float sinNear(float x){
     return t;
 }
 
-//sin ~= 1 - x2/2! + x4/5!
+//sin ~= 1 - x2/2! + x4/4!
 //ALMOST DONE, NOT OPTIMISED. RETURNS NEGATIVE OF EXPECTED ANSWER ?
 float cosNear(float x){
     float t = 0;
