@@ -37,15 +37,15 @@ int charFind(char a, char str[]){
 
 //detection de palindrome
 //DONE
-int palindromeRecur(char string[], int i, int j){
+int palindromeRecur(char str[], int i, int j){
     if (i >= j) { return 0; } //return "TRUE" si les 2 'indexes' se croisent
-    if (string[i]!=string[j]) { return 1; }
-    return palindromeRecur(string, i+1, j-1);
+    if (str[i]!=str[j]) { return 1; }
+    return palindromeRecur(str, i+1, j-1);
 }
 
-int strLength(char *string){
+int strLength(char *str){
     for(int i=0;;i++){
-        if (string[i] == '\0'){
+        if (str[i] == '\0'){
             //printf("%d", i);
             return i;
         }
