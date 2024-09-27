@@ -15,12 +15,12 @@ Description: Fonctions qui font de l'aritmetique & des operations sur le matrice
 #define MAX_TAYLOR_I 10
 #define PI 3.141592
 
-
-typedef struct  {
+ //struct Matrix Matrix;
+typedef struct {
         int n;
         int m;
-        //matrix[99][99];
-} matrixS;
+        int table[99][99];
+} Matrix ;
 //typedef struct 
 
 // recherche d’un caractère 
@@ -97,25 +97,18 @@ float cosNear(float x){
     return t+1;
 }
 
-//marche pas encore
-void matrixAdd(matrixS m1, matrixS m2){
-    if (m1.m == m2.m && m1.n == m2.n){
-        //matrixS m3 {m = }
-        for (int i =0; i < m1.m; i++){
-            for (int j =0; j < m1.n; i++){
-                
-            }
-        }
-        
-    }
-}
+
 
 int main() {
 
     char gaming[] = "RACECWAdfwahuofwajhfwajhbfwbjhhlaigkkkAR\0";
-    int wtf = palindromeRecur(gaming, 0, 7-1); 
+    int wtf = palindromeRecur(gaming, 0, strLength(gaming)-1); 
     int test = strLength(gaming);
-    printf("%i", test);
+    //printf("%i", test);
+
+    Matrix m1 = {2, 2, {{1, 2}, {3, 4}}};
+    Matrix m2 = {2, 2, {{5, 6}, {7, 8}}};
+    matrixMulti(m1, m2);
 
     //float test = sinNear(2.8);
     //printf("%.6f", test);
