@@ -1,6 +1,7 @@
 /********
 Fichier: nomDuFichier
-Auteurs: Zakary Romdhane romz6050, Maïna Clermont [CIP]
+Auteurs: Zakary Romdhane romz6050
+         Maïna Clermont clem5406
 Date: 24/09/2024
 Description: Fonctions qui font de l'aritmetique & des operations sur le matrices de base. Ne necessite pas d'input par l'utilisateur.
 ********/
