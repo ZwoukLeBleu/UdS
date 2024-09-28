@@ -8,7 +8,7 @@ typedef struct Matrix {
 } Matrix;
 
 int charFind(char a, char str[]);
-int palindromeRecur(char str[], int i, int j);
+int palindromeCheck(char str[], int i, int j);
 int strLength(char str[]);
 int factorial(int x);
 float power(float x, int p);

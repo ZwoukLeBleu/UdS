@@ -6,22 +6,14 @@ Date: 24/09/2024
 Description: Fonctions qui font de l'aritmetique & des operations sur le matrices de base. Ne necessite pas d'input par l'utilisateur.
 ********/
 
-/*— complexité basse : recherche d’un caractère et détection de palindrome
-  — complexité moyenne : calcul du sinus et calcul du cosinus à l’aide de séries
-  — complexité haute : addition de matrices et multiplication de matrices carrées*/
-
 #include <stdio.h>
 #include "main.h"
 
 #define MAX_TAYLOR_I 10
-#define PI 3.141592
 
- //struct Matrix Matrix;
-
-//typedef struct 
-
-// recherche d’un caractère 
-//DONE
+// Description  : trouve l'index d'un caractère dans une chaine de caractères
+// Précondition : 'a' est un caractère et 'str' est une chaine de caractères
+// Postcondition: retourne l'index de 'a' si il est présent dans 'str', sinon retourne -1
 int charFind(char a, char str[]){
     int i;
     for (i = 0; i < strLength(str); i++) {
@@ -32,14 +24,18 @@ int charFind(char a, char str[]){
     return -1;
 }
 
-//detection de palindrome
-//DONE
-int palindromeRecur(char str[], int i, int j){
+// Description  : vérifie si une chaine de caractères est un palindrome
+// Précondition : i est l'index de départ et j est l'index de fin (habituelement 0 et strLength(str)-1)
+// Postcondition: retourne 1 ou 0 tel qu'un bool
+int palindromeCheck(char str[], int i, int j){
     if (i >= j) { return 1; } //return "TRUE" si les 2 'indexes' se croisent
     if (str[i]!=str[j]) { return 0; }
-    return palindromeRecur(str, i+1, j-1);
+    return palindromeCheck(str, i+1, j-1);
 }
 
+// Description  : donne la longueur d'une chaine de caractères
+// Précondition : str se termine par '\0'
+// Postcondition: i est un entier positif
 int strLength(char *str){
     for(int i=0;;i++){
         if (str[i] == '\0'){
@@ -49,6 +45,9 @@ int strLength(char *str){
     }
 }
 
+// Description  : calcule la factorielle d'un entier 
+// Précondition : x est un entier positif
+// Postcondition: t est un entier positif
 int factorial(int x){
     if (x > 0){
         int t=1;
@@ -60,6 +59,9 @@ int factorial(int x){
     else { return -1; }
 }
 
+// Description  : calcule la puissance d'un nombre 
+// Précondition : x est reel et p est un entier positif
+// Postcondition: resultat du calcul (reel)
 float power(float x, int p){
     float t = 1;
     for (p; p > 0; p--){
@@ -68,8 +70,9 @@ float power(float x, int p){
     return t;
 }
 
-//sin ~= x - x3/3! + x5/5!
-//ALMOST DONE, NOT OPTIMISED. RETURNS NEGATIVE OF EXPECTED ANSWER ?
+// Description  : approxime la valeur du sinus d'un nombre
+// Précondition : x doit etre entre -pi et pi
+// Postcondition: total approximatif reel
 float sinNear(float x){
     float t = 0;
     int v=1;
@@ -81,8 +84,9 @@ float sinNear(float x){
     return t;
 }
 
-//sin ~= 1 - x2/2! + x4/4!
-//ALMOST DONE, NOT OPTIMISED. RETURNS NEGATIVE OF EXPECTED ANSWER ?
+// Description  : approxime la valeur du cosinus d'un nombre
+// Précondition : x doit etre entre -pi et pi
+// Postcondition: total approximatif reel
 float cosNear(float x){
     float t = 0;
     int v=1;
@@ -94,53 +98,59 @@ float cosNear(float x){
     return t+1;
 }
 
-// Affiche matrix
+// Description  : affiche une matrice à l'écran
+// Précondition : matrice non-nulle
+// Postcondition: N/A
 void printMatrix(Matrix m0){
-         for (int i = 0; i < m0.m; i++){
-             for (int j = 0; j < m0.n; j++){
-                      int x = m0.table[i][j];
-                      printf("%d ", x);
-             }
-             printf("\n");
-         }
+    for (int i = 0; i < m0.m; i++){
+        for (int j = 0; j < m0.n; j++){
+            int x = m0.table[i][j];
+            printf("%d ", x);
+        }
+    printf("\n");
+    }
 }
 
-// addition matrix
+// Description  : additionne 2 matrices 
+// Précondition : pour recevoir un resultat, les matrices doivent etre de meme taille
+// Postcondition: N/A
 void matrixAdd(Matrix m1, Matrix m2){
-         if (m1.m == m2.m && m1.n == m2.n){
-                  Matrix mR = {m1.m, m1.n};
-                  for (int i = 0; i < m1.m; i++){
-                           for (int j = 0; j < m1.n; j++){
-                                    mR.table[i][j] = m1.table[i][j] + m2.table[i][j];
-                           }
-                  }
-                  printMatrix(mR);
-         }
-         else{
-                  printf("Matrice(s) de mauvaise(s) taille(s)!");
-         }
+    if (m1.m == m2.m && m1.n == m2.n){
+        Matrix mR = {m1.m, m1.n};
+        for (int i = 0; i < m1.m; i++){
+            for (int j = 0; j < m1.n; j++){
+                mR.table[i][j] = m1.table[i][j] + m2.table[i][j];
+            }
+        }
+    printMatrix(mR);
+    }
+    else{
+        printf("Matrice(s) de mauvaise(s) taille(s)!");
+    }
 }
 
-// multiplication matrix
+// Description  : multiplie 2 matrices 
+// Précondition : pour recevoir un resultat, le nombre de colonnes de la 1ere matrice doit etre egal au nombre de lignes de la 2eme matrice
+// Postcondition: N/A
 void matrixMul(Matrix m1, Matrix m2){
-         if (m1.n == m2.m){
-                  Matrix mR = {m1.m, m2.n};
-                  for (int i = 0; i < m1.m; i++){
-                           for (int j = 0; j < m1.n; j++){
-                                    mR.table[i][j] = 0;
-                                    for (int k = 0; k < m2.m; k++){
-                                             mR.table[i][j] += m1.table[i][k] * m2.table[k][j];
-                                    }
-                           }
-                  }
-                  printMatrix(mR);
-         }
-         else{
-                  printf("Matrice(s) de mauvaise(s) taille(s)!");
-         }
+    if (m1.n == m2.m){
+        Matrix mR = {m1.m, m2.n};
+        for (int i = 0; i < m1.m; i++){
+            for (int j = 0; j < m1.n; j++){
+                mR.table[i][j] = 0;
+                for (int k = 0; k < m2.m; k++){
+                    mR.table[i][j] += m1.table[i][k] * m2.table[k][j];
+                }
+            }
+        }
+        printMatrix(mR);
+    }
+    else{
+        printf("Matrice(s) de mauvaise(s) taille(s)!");
+    }
 }
 
-int main() {
+int main(){
 
     // char gaming[] = "RACECWAdfwahuofwajhfwajhbfwbjhhlaigkkkAR\0";
     // int wtf = palindromeRecur(gaming, 0, strLength(gaming)-1); 
