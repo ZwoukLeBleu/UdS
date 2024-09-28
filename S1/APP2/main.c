@@ -108,7 +108,7 @@ void printMatrix(Matrix m0){
 // addition matrix
 void matrixAdd(Matrix m1, Matrix m2){
          if (m1.m == m2.m && m1.n == m2.n){
-                  Matrix mR;
+                  Matrix mR = {m1.m, m1.n};
                   for (int i = 0; i < m1.m; i++){
                            for (int j = 0; j < m1.n; j++){
                                     mR.table[i][j] = m1.table[i][j] + m2.table[i][j];
@@ -124,7 +124,7 @@ void matrixAdd(Matrix m1, Matrix m2){
 // multiplication matrix
 void matrixMul(Matrix m1, Matrix m2){
          if (m1.n == m2.m){
-                  Matrix mR;
+                  Matrix mR = {m1.m, m2.n};
                   for (int i = 0; i < m1.m; i++){
                            for (int j = 0; j < m1.n; j++){
                                     mR.table[i][j] = 0;
