@@ -17,11 +17,7 @@ Description: Fonctions qui font de l'aritmetique & des operations sur le matrice
 #define PI 3.141592
 
  //struct Matrix Matrix;
-struct Matrix {
-        int n;
-        int m;
-        int table[99][99];
-} Matrix;
+
 //typedef struct 
 
 // recherche d’un caractère 
@@ -99,7 +95,7 @@ float cosNear(float x){
 }
 
 // Affiche matrix
-void printMatrix(struct Matrix m0){
+void printMatrix(Matrix m0){
          for (int i = 0; i < m0.m; i++){
              for (int j = 0; j < m0.n; j++){
                       int x = m0.table[i][j];
@@ -110,9 +106,9 @@ void printMatrix(struct Matrix m0){
 }
 
 // addition matrix
-void matrixAdd(struct Matrix m1, struct Matrix m2){
+void matrixAdd(Matrix m1, Matrix m2){
          if (m1.m == m2.m && m1.n == m2.n){
-                  struct Matrix mR;
+                  Matrix mR;
                   for (int i = 0; i < m1.m; i++){
                            for (int j = 0; j < m1.n; j++){
                                     mR.table[i][j] = m1.table[i][j] + m2.table[i][j];
@@ -126,9 +122,9 @@ void matrixAdd(struct Matrix m1, struct Matrix m2){
 }
 
 // multiplication matrix
-void matrixMul(struct Matrix m1, struct Matrix m2){
+void matrixMul(Matrix m1, Matrix m2){
          if (m1.n == m2.m){
-                  struct Matrix mR;
+                  Matrix mR;
                   for (int i = 0; i < m1.m; i++){
                            for (int j = 0; j < m1.n; j++){
                                     mR.table[i][j] = 0;
@@ -151,8 +147,8 @@ int main() {
     // int test = strLength(gaming);
     //printf("%i", test);
 
-    struct Matrix m1 = {2, 2, {{1, 2}, {3, 4}}};
-    struct Matrix m2 = {2, 2, {{5, 6}, {7, 8}}};
+    Matrix m1 = {2, 2, {{1, 2}, {3, 4}}};
+    Matrix m2 = {2, 2, {{5, 6}, {7, 8}}};
     matrixAdd(m1, m2);
     matrixMul(m1, m2);
 
