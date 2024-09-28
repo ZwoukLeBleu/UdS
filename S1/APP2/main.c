@@ -17,11 +17,11 @@ Description: Fonctions qui font de l'aritmetique & des operations sur le matrice
 #define PI 3.141592
 
  //struct Matrix Matrix;
-typedef struct {
+struct Matrix {
         int n;
         int m;
         int table[99][99];
-} Matrix ;
+} Matrix;
 //typedef struct 
 
 // recherche d’un caractère 
@@ -98,16 +98,27 @@ float cosNear(float x){
     return t+1;
 }
 
+// Affiche matrix
+void printMatrix(struct Matrix m0){
+         for (int i = 0; i < m0.m; i++){
+             for (int j = 0; j < m0.n; j++){
+                      int x = m0.table[i][j];
+                      printf("%d ", x);
+             }
+             printf("\n");
+         }
+}
+
 // addition matrix
-Matrix matrixAdd(Matrix m1, Matrix m2){
+void matrixAdd(struct Matrix m1, struct Matrix m2){
          if (m1.m == m2.m && m1.n == m2.n){
-                  Matrix mR;
+                  struct Matrix mR;
                   for (int i = 0; i < m1.m; i++){
                            for (int j = 0; j < m1.n; j++){
                                     mR.table[i][j] = m1.table[i][j] + m2.table[i][j];
                            }
                   }
-                  return mR;
+                  printMatrix(mR);
          }
          else{
                   printf("Matrice(s) de mauvaise(s) taille(s)!");
@@ -115,9 +126,9 @@ Matrix matrixAdd(Matrix m1, Matrix m2){
 }
 
 // multiplication matrix
-Matrix matrixMul(Matrix m1, Matrix m2){
+void matrixMul(struct Matrix m1, struct Matrix m2){
          if (m1.n == m2.m){
-                  Matrix mR;
+                  struct Matrix mR;
                   for (int i = 0; i < m1.m; i++){
                            for (int j = 0; j < m1.n; j++){
                                     mR.table[i][j] = 0;
@@ -126,21 +137,10 @@ Matrix matrixMul(Matrix m1, Matrix m2){
                                     }
                            }
                   }
-                  return mR;
+                  printMatrix(mR);
          }
          else{
                   printf("Matrice(s) de mauvaise(s) taille(s)!");
-         }
-}
-
-// Affiche matrix
-void printMatrix(Matrix m0){
-         for (int i = 0; i < m0.m; i++){
-             for (int j = 0; j < m0; j++){
-                      int x = m0.table[i][j];
-                      printf("%d ", x);
-             }
-             printf("\n");
          }
 }
 
@@ -151,14 +151,10 @@ int main() {
     // int test = strLength(gaming);
     //printf("%i", test);
 
-    Matrix m1 = {2, 2, {{1, 2}, {3, 4}}};
-    Matrix m2 = {2, 2, {{5, 6}, {7, 8}}};
-    Matrix mA;
-    Matrix mM;
-    mA = matrixAdd(m1, m2);
-    mM = matrixMul(m1, m2);
-    printMatrix(mA);
-    printMatrix(mM);
+    struct Matrix m1 = {2, 2, {{1, 2}, {3, 4}}};
+    struct Matrix m2 = {2, 2, {{5, 6}, {7, 8}}};
+    matrixAdd(m1, m2);
+    matrixMul(m1, m2);
 
     //float test = sinNear(2.8);
     //printf("%.6f", test);
