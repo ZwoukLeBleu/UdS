@@ -35,8 +35,8 @@ int charFind(char a, char str[]){
 //detection de palindrome
 //DONE
 int palindromeRecur(char str[], int i, int j){
-    if (i >= j) { return 0; } //return "TRUE" si les 2 'indexes' se croisent
-    if (str[i]!=str[j]) { return 1; }
+    if (i >= j) { return 1; } //return "TRUE" si les 2 'indexes' se croisent
+    if (str[i]!=str[j]) { return 0; }
     return palindromeRecur(str, i+1, j-1);
 }
 
