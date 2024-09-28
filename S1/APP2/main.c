@@ -98,18 +98,32 @@ float cosNear(float x){
     return t+1;
 }
 
-
+// addition matrix
+Matrix matrixAdd(Matrix m1, Matrix m2){
+         if (m1.m == m2.m && m1.n == m2.n){
+                  Matrix mR;
+                  for (int i = 0; i < m1.m; i++){
+                           for (int j = 0; j < m1.n; j++){
+                                    mR.table[i][j] = m1.table[i][j] + m2.table[i][j];
+                           }
+                  }
+                  return mR;
+         }
+         else{
+                  printf("Matrice(s) de mauvaise(s) taille(s)!");
+         }
+}
 
 int main() {
 
-    char gaming[] = "RACECWAdfwahuofwajhfwajhbfwbjhhlaigkkkAR\0";
-    int wtf = palindromeRecur(gaming, 0, strLength(gaming)-1); 
-    int test = strLength(gaming);
+    // char gaming[] = "RACECWAdfwahuofwajhfwajhbfwbjhhlaigkkkAR\0";
+    // int wtf = palindromeRecur(gaming, 0, strLength(gaming)-1); 
+    // int test = strLength(gaming);
     //printf("%i", test);
 
     Matrix m1 = {2, 2, {{1, 2}, {3, 4}}};
     Matrix m2 = {2, 2, {{5, 6}, {7, 8}}};
-    matrixMulti(m1, m2);
+    matrixAdd(m1, m2);
 
     //float test = sinNear(2.8);
     //printf("%.6f", test);
