@@ -17,11 +17,11 @@ Description: Fonctions qui font de l'aritmetique & des operations sur le matrice
 #define PI 3.141592
 
  //struct Matrix Matrix;
-struct Matrix {
+/*typedef struct {
         int n;
         int m;
         int table[99][99];
-} Matrix;
+} Matrix;*/
 //typedef struct 
 
 // recherche d’un caractère 
@@ -99,70 +99,58 @@ float cosNear(float x){
 }
 
 // Affiche matrix
-void printMatrix(struct Matrix m0){
-         for (int i = 0; i < m0.m; i++){
-             for (int j = 0; j < m0.n; j++){
-                      int x = m0.table[i][j];
-                      printf("%d ", x);
-             }
-             printf("\n");
-         }
+void printMatrix(Matrix m0){
+    for (int i = 0; i < m0.m; i++){
+        for (int j = 0; j < m0.n; j++){
+            printf("%d ", m0.table[i][j]);
+        }
+        printf("\n");
+    }
 }
 
-// addition matrix
-void matrixAdd(struct Matrix m1, struct Matrix m2){
-         if (m1.m == m2.m && m1.n == m2.n){
-                  struct Matrix mR;
-                  for (int i = 0; i < m1.m; i++){
-                           for (int j = 0; j < m1.n; j++){
-                                    mR.table[i][j] = m1.table[i][j] + m2.table[i][j];
-                           }
-                  }
-                  printMatrix(mR);
-         }
-         else{
-                  printf("Matrice(s) de mauvaise(s) taille(s)!");
-         }
+// Addition matrix
+void matrixAdd(Matrix m1, Matrix m2){
+    if (m1.m == m2.m && m1.n == m2.n){
+        Matrix mR = {m1.m, m1.n};
+        for (int i = 0; i < m1.m; i++){
+            for (int j = 0; j < m1.n; j++){
+                mR.table[i][j] = m1.table[i][j] + m2.table[i][j];
+            }
+        }
+        printMatrix(mR);
+    } else {
+        printf("Matrix dimensions do not match for addition.\n");
+    }
 }
 
-// multiplication matrix
-void matrixMul(struct Matrix m1, struct Matrix m2){
-         if (m1.n == m2.m){
-                  struct Matrix mR;
-                  for (int i = 0; i < m1.m; i++){
-                           for (int j = 0; j < m1.n; j++){
-                                    mR.table[i][j] = 0;
-                                    for (int k = 0; k < m2.m; k++){
-                                             mR.table[i][j] += m1.table[i][k] * m2.table[k][j];
-                                    }
-                           }
-                  }
-                  printMatrix(mR);
-         }
-         else{
-                  printf("Matrice(s) de mauvaise(s) taille(s)!");
-         }
+// Multiplication matrix
+void matrixMul(Matrix m1, Matrix m2){
+    if (m1.n == m2.m){
+        Matrix mR = {m1.m, m2.n};
+        for (int i = 0; i < m1.m; i++){
+            for (int j = 0; j < m2.n; j++){
+                mR.table[i][j] = 0;
+                for (int k = 0; k < m1.n; k++){
+                    mR.table[i][j] += m1.table[i][k] * m2.table[k][j];
+                }
+            }
+        }
+        printMatrix(mR);
+    } else {
+        printf("Matrix dimensions do not match for multiplication.\n");
+    }
 }
 
 int main() {
+    Matrix m1 = {2, 2, {{1, 2}, {3, 4}}};
+    Matrix m2 = {2, 2, {{5, 6}, {7, 8}}};
 
-    // char gaming[] = "RACECWAdfwahuofwajhfwajhbfwbjhhlaigkkkAR\0";
-    // int wtf = palindromeRecur(gaming, 0, strLength(gaming)-1); 
-    // int test = strLength(gaming);
-    //printf("%i", test);
-
-    struct Matrix m1 = {2, 2, {{1, 2}, {3, 4}}};
-    struct Matrix m2 = {2, 2, {{5, 6}, {7, 8}}};
+    printf("Addition Result:\n");
     matrixAdd(m1, m2);
+
+    printf("Multiplication Result:\n");
     matrixMul(m1, m2);
 
-    //float test = sinNear(2.8);
-    //printf("%.6f", test);
-    //printf("%d", power(-1,3));
-    //int g = power(5,4);
-    //printf("%d", g);
-
-   printf("\n");
-   return 0;
+    return 0;
 }
 
