@@ -5,7 +5,8 @@ Auteurs: Zakary Romdhane romz6050
 Date: 24/09/2024
 Description: Fonctions qui font de l'aritmetique & des operations sur le matrices de base. Ne necessite pas d'input par l'utilisateur.
 ********/
-#define MAX_TAYLOR_I 10
+#define MAX_TAYLOR_ITERATION 5
+#define MAX_TAYLOR_EXPONENT 11
 #define PI 3.14159265359
 
 #include <stdio.h>
@@ -41,11 +42,11 @@ float power(float x, int p){
 // Postcondition: total approximatif reel
 float sinNear(float x){
     float t = 0;
-    int v=1;
-    for (int i = 1; i < MAX_TAYLOR_I; i+=2){
+    int i=1;
+    for (int v = 1; v <= MAX_TAYLOR_ITERATION; v++){
         //printf(" %d",i);
         t += power(-1,v+1)*(power(x, i)/factorial(i));
-        v++;
+        i += 2;
     }
     return t;
 }
