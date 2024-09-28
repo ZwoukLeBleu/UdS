@@ -114,6 +114,36 @@ Matrix matrixAdd(Matrix m1, Matrix m2){
          }
 }
 
+// multiplication matrix
+Matrix matrixMul(Matrix m1, Matrix m2){
+         if (m1.n == m2.m){
+                  Matrix mR;
+                  for (int i = 0; i < m1.m; i++){
+                           for (int j = 0; j < m1.n; j++){
+                                    mR.table[i][j] = 0;
+                                    for (int k = 0; k < m2.m; k++){
+                                             mR.table[i][j] += m1.table[i][k] * m2.table[k][j];
+                                    }
+                           }
+                  }
+                  return mR;
+         }
+         else{
+                  printf("Matrice(s) de mauvaise(s) taille(s)!");
+         }
+}
+
+// Affiche matrix
+void printMatrix(Matrix m0){
+         for (int i = 0; i < m0.m; i++){
+             for (int j = 0; j < m0; j++){
+                      int x = m0.table[i][j];
+                      printf("%d ", x);
+             }
+             printf("\n");
+         }
+}
+
 int main() {
 
     // char gaming[] = "RACECWAdfwahuofwajhfwajhbfwbjhhlaigkkkAR\0";
@@ -123,7 +153,12 @@ int main() {
 
     Matrix m1 = {2, 2, {{1, 2}, {3, 4}}};
     Matrix m2 = {2, 2, {{5, 6}, {7, 8}}};
-    matrixAdd(m1, m2);
+    Matrix mA;
+    Matrix mM;
+    mA = matrixAdd(m1, m2);
+    mM = matrixMul(m1, m2);
+    printMatrix(mA);
+    printMatrix(mM);
 
     //float test = sinNear(2.8);
     //printf("%.6f", test);
