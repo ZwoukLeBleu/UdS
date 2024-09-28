@@ -1,1 +1,1 @@
-float sinNear(int x){
+ {m1.m, m2.n}
