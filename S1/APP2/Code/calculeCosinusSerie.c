@@ -47,7 +47,6 @@ float cosNear(float x){
     float t = 0;
     int i = 2;
     for (int v = 1; v <= MAX_TAYLOR_ITERATION; v++){
-        //printf(" %d",i);
         t += power(-1,v)*(power(x, i)/factorial(i));
         i += 2;
     }

@@ -14,7 +14,6 @@ Description: Fonctions qui font de l'aritmetique & des operations sur le matrice
 int strLength(char *str){
     for(int i=0;;i++){
         if (str[i] == '\0'){
-            //printf("%d", i);
             return i;
         }
     }
