@@ -51,9 +51,16 @@ float sinNear(float x){
     return t;
 }
 
+sinNearTest(float x, float val){
+    if (sinNear(x) >= val-0.01 || sinNear(x) <= val+0.01){
+        printf("sin(%f) = %f : Test passed\n", x, val);
+    } else {
+        printf("sin(%f) = %f : Test failed\n", x, val);
+    }
+}
+
 int main(){
-    printf("%f\n", sinNear(1));
-    printf("%f\n", sinNear(0));
-    printf("%f\n", sinNear(PI/4));
-    printf("%f\n", sinNear(PI/2));
+    sinNearTest(1, 0.841471);
+    sinNearTest(PI/2, 1);
+    sinNearTest(PI, 0);
 }

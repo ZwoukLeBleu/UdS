@@ -53,9 +53,16 @@ float cosNear(float x){
     return t+1;
 }
 
+void cosNearTest(float x, float val){
+    if (cosNear(x) >= val-0.01 || cosNear(x) <= val+0.01){
+        printf("cos(%f) = %f : Test passed\n", x, val);
+    } else {
+        printf("cos(%f) = %f : Test failed\n", x, val);
+    }
+}
+
 int main(){
-    printf("%f\n", cosNear(1.0));
-    printf("%f\n", cosNear(0.0));
-    printf("%f\n", cosNear(PI/4));
-    printf("%f\n", cosNear(PI/2));
+    cosNearTest(1, 0.540302);
+    cosNearTest(PI/2, 0);
+    cosNearTest(PI, -1);
 }

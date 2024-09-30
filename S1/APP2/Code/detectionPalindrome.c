@@ -27,13 +27,18 @@ int palindromeCheck(char str[], int i, int j){
     if (i >= j) { return 1; } //return "TRUE" si les 2 'indexes' se croisent
     if (str[i]!=str[j]) { return 0; }
     return palindromeCheck(str, i+1, j-1);
+}
 
-    
+void palindromeTest(char str[], int val){
+    if (palindromeCheck(str, 0, strLength(str)-1) == val){
+        printf("%s : Test passed\n", str);
+    } else {
+        printf("%s: Test failed\n", str);
+    }
 }
 
 int main(){
-    char racecar[] = "RACECAR";
-    char gaming[] = "gaming";
-    printf("%d\n", palindromeCheck(racecar, 0, strLength(racecar)-1));
-    printf("%d\n", palindromeCheck(gaming, 0, strLength(gaming)-1));
+    palindromeTest("racecar", 1);
+    palindromeTest("gaming", 0);
+    palindromeTest("KAYAK", 1);
 }

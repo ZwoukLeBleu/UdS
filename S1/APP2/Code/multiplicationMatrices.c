@@ -32,7 +32,7 @@ void printMatrix(Matrix m0){
 // Précondition : pour recevoir un resultat, le nombre de colonnes de la 1ere matrice doit etre egal au nombre de lignes de la 2eme matrice.
 //                Les matrices doivent etre plus petites que MAX_MATRIX_SIZE 
 // Postcondition: N/A
-void matrixMul(Matrix m1, Matrix m2){
+Matrix matrixMul(Matrix m1, Matrix m2){
     if (m1.n == m2.m){
         Matrix mR = {m1.n, m2.m};
         for (int i = 0; i <= m1.m; i++){
@@ -43,15 +43,41 @@ void matrixMul(Matrix m1, Matrix m2){
                 }
             }
         }
-        printMatrix(mR);
+        return mR;
     }
     else{
-        printf("Matrice(s) de mauvaise(s) taille(s)!");
+        return m1;
+    }
+}
+
+int matrixEquality(Matrix m1, Matrix m2){
+    if (m1.m == m2.m && m1.n == m2.n){
+        for (int i = 0; i <= m1.m; i++){
+            for (int j = 0; j <= m1.n; j++){
+                if (m1.table[i][j] != m2.table[i][j]){
+                    return 0;
+                }
+            }
+        }
+        return 1;
+    }
+    else{
+        return 0;
+    }
+}
+
+void matrixMulTest(Matrix m1, Matrix m2, Matrix mR){
+    if (matrixEquality(matrixMul(m1, m2), mR) == 1){
+        printf("Test passed\n");
+    } else {
+        printf("Test failed\n");
     }
 }
 
 int main(){
     Matrix m1 = {3, 2, {{1, 2}, {3, 4}, {5, 6}}};
     Matrix m2 = {2, 3, {{6,5,4}, {3,2,1}}};
-    matrixMul(m1, m2);
+    Matrix mR = {3, 3, {{12, 9, 6}, {30, 23, 16}, {48, 37, 26}}};
+    matrixMulTest(m1, m2, mR);
+
 }

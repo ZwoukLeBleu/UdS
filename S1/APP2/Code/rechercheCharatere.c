@@ -32,12 +32,17 @@ int charFind(char a, char str[]){
     return -1;
 }
 
+charFindTest(char a, char str[], int val){
+    if (charFind(a, str) == val){
+        printf("%c in %s at i=%d : Test passed\n", a, str, val);
+    } else {
+        printf("%c in %s at i= %d : Test failed\n", a, str, val);
+    }
+}
+
 int main(){
-    char anti[] = "anticonstitutionnellement";
-    char bonjour[] = "bonjour";
-    char allo[] = "allocommentcava";
-    printf("%d\n", charFind('n', anti));
-    printf("%d\n", charFind('e', bonjour));
-    printf("%d\n", charFind('r', bonjour));
-    printf("%d\n", charFind('a', allo));
+    charFindTest('a', "racecar", 1);
+    charFindTest('g', "gaming", 0);
+    charFindTest('w', "ALLO", -1);
+    charFindTest('Y', "salutAvecUnY", 11);
 }
