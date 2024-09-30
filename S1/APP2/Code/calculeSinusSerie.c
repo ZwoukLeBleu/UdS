@@ -1,5 +1,5 @@
 /********
-Fichier: nomDuFichier
+Fichier: calculeSinusSerie
 Auteurs: Zakary Romdhane romz6050
          Maïna Clermont clem5406
 Date: 24/09/2024
@@ -51,8 +51,8 @@ float sinNear(float x){
     return t;
 }
 
-sinNearTest(float x, float val){
-    if (sinNear(x) >= val-0.01 || sinNear(x) <= val+0.01){
+void sinNearTest(float x, float val){
+    if (sinNear(x) >= val-0.01 && sinNear(x) <= val+0.01){
         printf("sin(%f) = %f : Test passed\n", x, val);
     } else {
         printf("sin(%f) = %f : Test failed\n", x, val);

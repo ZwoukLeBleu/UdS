@@ -1,5 +1,5 @@
 /********
-Fichier: nomDuFichier
+Fichier: additionMatrices
 Auteurs: Zakary Romdhane romz6050
          Maïna Clermont clem5406
 Date: 24/09/2024
@@ -10,11 +10,11 @@ Description: Fonctions qui font de l'aritmetique & des operations sur le matrice
 
 #define MAX_MATRIX_SIZE 99
 
-typedef struct Matrix {
+/*typedef struct Matrix {
         int m;
         int n;
         int table[MAX_MATRIX_SIZE][MAX_MATRIX_SIZE];
-} Matrix;
+} Matrix;*/
 
 // Description  : affiche une matrice à l'écran
 // Précondition : matrice non-nulle

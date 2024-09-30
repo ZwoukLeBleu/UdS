@@ -1,5 +1,5 @@
 /********
-Fichier: nomDuFichier
+Fichier: calculeCosinusSerie
 Auteurs: Zakary Romdhane romz6050
          Maïna Clermont clem5406
 Date: 24/09/2024
@@ -54,7 +54,7 @@ float cosNear(float x){
 }
 
 void cosNearTest(float x, float val){
-    if (cosNear(x) >= val-0.01 || cosNear(x) <= val+0.01){
+    if (cosNear(x) >= val-0.01 && cosNear(x) <= val+0.01){
         printf("cos(%f) = %f : Test passed\n", x, val);
     } else {
         printf("cos(%f) = %f : Test failed\n", x, val);
