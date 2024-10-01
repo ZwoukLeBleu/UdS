@@ -46,7 +46,7 @@ void matrixMul(int m1[MATRIX1_M][MATRIX1_N], int m2[MATRIX2_M][MATRIX2_N]){
 	}
 	else {
 		printf("Erreur");
-	}
+    }
 }
 
 int matrixEquality(int m1[MATRIX1_M][MATRIX2_N], int m2[MATRIX1_M][MATRIX2_N]) {
