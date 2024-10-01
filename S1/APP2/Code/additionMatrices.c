@@ -15,12 +15,6 @@ Description: Fonctions qui font de l'aritmetique & des operations sur le matrice
 #define MATRIX2_N 3
 int mR[MATRIX1_M][MATRIX1_N] = {0};
 
-/*typedef struct Matrix {
-        int m;
-        int n;
-        int table[MAX_MATRIX_SIZE][MAX_MATRIX_SIZE];
-} Matrix;*/
-
 // Description  : affiche une matrice à l'écran
 // Précondition : matrice non-nulle
 // Postcondition: N/A
@@ -31,8 +25,7 @@ void printMatrix(int m0[MATRIX1_M][MATRIX1_N]){
             int x = m0[i][j];
             printf("%d ", x);
         }
-    printf("]\n");
-    //printf("\n");
+		printf("]\n");
     }
 }
 
@@ -42,20 +35,18 @@ void printMatrix(int m0[MATRIX1_M][MATRIX1_N]){
 // Postcondition: N/A
 void matrixAdd(int m1[MATRIX1_M][MATRIX1_N], int m2[MATRIX2_M][MATRIX2_N]){
     if (MATRIX1_M == MATRIX2_M && MATRIX1_N ==  MATRIX2_N){
-        
         for (int i = 0; i <= MATRIX1_M; i++){
             for (int j = 0; j <= MATRIX1_N; j++){
                 mR[i][j] = m1[i][j] + m2[i][j];
             }
         }
-        //return mR;
     //printMatrix(mR);
     }
     else{
-        //return m1;
         //printf("Matrice(s) de mauvaise(s) taille(s)!");
     }
 }
+
 int matrixEquality(int m1[MATRIX1_M][MATRIX1_N], int m2[MATRIX1_M][MATRIX1_N]) {
     for (int i = 0; i < MATRIX1_M; i++) {
         for (int j = 0; j < MATRIX1_N; j++) {
