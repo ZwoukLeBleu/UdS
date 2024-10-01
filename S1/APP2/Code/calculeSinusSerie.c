@@ -5,7 +5,7 @@ Auteurs: Zakary Romdhane romz6050
 Date: 24/09/2024
 Description: Fonctions qui font de l'aritmetique & des operations sur le matrices de base. Ne necessite pas d'input par l'utilisateur.
 ********/
-#define MAX_TAYLOR_ITERATION 5
+#define MAX_TAYLOR_ITERATION 8
 #define MAX_TAYLOR_EXPONENT 11
 #define PI 3.14159265359
 
@@ -52,15 +52,16 @@ float sinNear(float x){
 }
 
 void sinNearTest(float x, float val){
-    if (sinNear(x) >= val-0.01 && sinNear(x) <= val+0.01){
-        printf("sin(%f) = %f : Test passed\n", x, val);
+    if (sinNear(x) >= val-0.001 && sinNear(x) <= val+0.001){
+        printf("Resultat attendu de sin(%f) = %f --- Resultat obtenu = %f -> Test PASSED !\n", x,  val, sinNear(x));
     } else {
-        printf("sin(%f) = %f : Test failed\n", x, val);
+        printf("Resultat attendu de sin(%f) = %f --- Resultat obtenu = %f -> Test FAILED !\n", x,  val, sinNear(x));
     }
 }
 
 int main(){
     sinNearTest(1, 0.841471);
+    sinNearTest(0, 0);
+    sinNearTest(PI/4, 0.707107);
     sinNearTest(PI/2, 1);
-    sinNearTest(PI, 0);
 }

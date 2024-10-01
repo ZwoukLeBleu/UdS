@@ -26,11 +26,13 @@ int mR[MATRIX1_M][MATRIX1_N] = {0};
 // Postcondition: N/A
 void printMatrix(int m0[MATRIX1_M][MATRIX1_N]){
     for (int i = 0; i < MATRIX1_M; i++){
+        printf("[");
         for (int j = 0; j < MATRIX1_N; j++){
             int x = m0[i][j];
             printf("%d ", x);
         }
-    printf("\n");
+    printf("]\n");
+    //printf("\n");
     }
 }
 
@@ -65,11 +67,11 @@ int matrixEquality(int m1[MATRIX1_M][MATRIX1_N], int m2[MATRIX1_M][MATRIX1_N]) {
     return 1;
 }
 
-void matrixAddTest(int mR[MATRIX1_M][MATRIX2_N], int mT[MATRIX1_M][MATRIX2_N]) {
-    if (matrixEquality(mR, mT) == 1) {
-        printf("Test passed\n");
+void matrixAddTest(int m1[MATRIX1_M][MATRIX2_N], int m2[MATRIX1_M][MATRIX2_N]) {
+    if (matrixEquality(m1, m2) == 1) {
+        printf("\nTest passed\n");
     } else {
-        printf("Test failed\n");
+        printf("\nTest failed\n");
     }
 }
 
@@ -78,6 +80,18 @@ int main(){
     int m2[MATRIX2_M][MATRIX2_N] = {{6,5,4}, {3,2,1}};
     int mT[MATRIX1_M][MATRIX2_N] = {{7,7,7}, {7,7,7}};
     
-    matrixAdd(m1, m2);
+    matrixAdd(m1, m2); // modifie mR (global)
+
+    printf("Matrice 1 :\n");
+    printMatrix(m1);
+    printf("\nMatrice 2 :\n");
+    printMatrix(m2);
+    printf("\nMatrice resultante attendu :\n");
+    printMatrix(mT);
+    printf("\nMatrice resultante obtenu :\n");
+    printMatrix(mR);
     matrixAddTest(mT, mR);
+
+    return 0;
+
 }
