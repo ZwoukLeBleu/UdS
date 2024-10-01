@@ -1,5 +1,5 @@
 /********
-Fichier: calculeSinusSerie
+Fichier: calculSinusSerie
 Auteurs: Zakary Romdhane romz6050
          Maïna Clermont clem5406
 Date: 24/09/2024

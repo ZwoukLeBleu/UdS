@@ -8,7 +8,6 @@ Description: Fonctions qui font de l'aritmetique & des operations sur le matrice
 
 #include <stdio.h>
 
-#define MAX_MATRIX_SIZE 99
 #define MATRIX1_M 2
 #define MATRIX1_N 3
 #define MATRIX2_M 2
@@ -31,7 +30,7 @@ void printMatrix(int m0[MATRIX1_M][MATRIX1_N]){
 
 // Description  : additionne 2 matrices 
 // Précondition : pour recevoir un resultat, les matrices doivent etre de meme taille
-//                Les matrices doivent etre plus petites que MAX_MATRIX_SIZE 
+//                Les matrices doivent etre plus petites que 99 par 99 
 // Postcondition: N/A
 void matrixAdd(int m1[MATRIX1_M][MATRIX1_N], int m2[MATRIX2_M][MATRIX2_N]){
     if (MATRIX1_M == MATRIX2_M && MATRIX1_N ==  MATRIX2_N){
