@@ -62,6 +62,6 @@ void sinNearTest(float x, float val){
 int main(){
     sinNearTest(1, 0.841471);
     sinNearTest(0, 0);
-    sinNearTest(PI/4, 0.707107);
+    sinNearTest(PI/4, 0.707107);    
     sinNearTest(PI/2, 1);
 }

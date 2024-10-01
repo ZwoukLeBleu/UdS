@@ -55,9 +55,9 @@ float cosNear(float x){
 
 void cosNearTest(float x, float val){
     if (cosNear(x) >= val-0.01 && cosNear(x) <= val+0.01){
-        printf("cos(%f) = %f : Test passed\n", x, val);
+        printf("Resultat attendu de sin(%f) = %f --- Resultat obtenu = %f -> Test PASSED !\n", x,  val, cosNear(x));
     } else {
-        printf("cos(%f) = %f : Test failed\n", x, val);
+        printf("Resultat attendu de sin(%f) = %f --- Resultat obtenu = %f -> Test FAILED !\n", x,  val, cosNear(x));
     }
 }
 
