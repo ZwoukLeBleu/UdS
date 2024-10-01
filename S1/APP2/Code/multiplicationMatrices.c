@@ -19,11 +19,12 @@ int mR[MATRIX1_M][MATRIX2_N] = {0};
 // Postcondition: N/A
 void printMatrix(){
     for (int i = 0; i < MATRIX1_M; i++){
+		printf("[");
         for (int j = 0; j < MATRIX2_N; j++){
             int x = mR[i][j];
-            printf("%d\t", x);
+            printf("%d ", x);
         }
-    printf("\n");
+		printf("]\n");
     }
 }
 
@@ -32,6 +33,7 @@ void printMatrix(){
 //                Les matrices doivent etre plus petites que MAX_MATRIX_SIZE 
 // Postcondition: N/A
 void matrixMul(int m1[MATRIX1_M][MATRIX1_N], int m2[MATRIX2_M][MATRIX2_N]){
+	if(MATRIX1_N == MATRIX2_M){
         for (int i = 0; i <= MATRIX1_N; i++){
             for (int j = 0; j <= MATRIX1_M; j++){
                 mR[i][j] = 0;
@@ -40,7 +42,10 @@ void matrixMul(int m1[MATRIX1_M][MATRIX1_N], int m2[MATRIX2_M][MATRIX2_N]){
                 }
             }
         }
-        //printMatrix(mR);
+        printMatrix();
+	}
+	else {
+		printf("Erreur");
 }
 
 int matrixEquality(int m1[MATRIX1_M][MATRIX2_N], int m2[MATRIX1_M][MATRIX2_N]) {
@@ -69,5 +74,4 @@ int main(){
     
     matrixMul(m1, m2);
     matrixMulTest(mT, mR);
-    
 }
