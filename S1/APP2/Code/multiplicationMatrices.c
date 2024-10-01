@@ -30,7 +30,7 @@ void printMatrix(){
 
 // Description  : multiplie 2 matrices 
 // Précondition : pour recevoir un resultat, le nombre de colonnes de la 1ere matrice doit etre egal au nombre de lignes de la 2eme matrice.
-//                Les matrices doivent etre plus petites que MAX_MATRIX_SIZE 
+//                Les matrices doivent etre plus petites que 99 par 99 
 // Postcondition: N/A
 void matrixMul(int m1[MATRIX1_M][MATRIX1_N], int m2[MATRIX2_M][MATRIX2_N]){
 	if(MATRIX1_N == MATRIX2_M){
@@ -46,6 +46,7 @@ void matrixMul(int m1[MATRIX1_M][MATRIX1_N], int m2[MATRIX2_M][MATRIX2_N]){
 	}
 	else {
 		printf("Erreur");
+    }
 }
 
 int matrixEquality(int m1[MATRIX1_M][MATRIX2_N], int m2[MATRIX1_M][MATRIX2_N]) {
