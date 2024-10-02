@@ -63,6 +63,6 @@ void cosNearTest(float x, float val){
 
 int main(){
     cosNearTest(1, 0.540302);
-    cosNearTest(PI/2, 0);
+    cosNearTest(-PI/4, 0.707107);
     cosNearTest(PI, -1);
 }

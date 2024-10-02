@@ -8,19 +8,18 @@ Description: Fonctions qui font de l'aritmetique & des operations sur le matrice
 
 #include <stdio.h>
 
-#define MATRIX1_M 2
-#define MATRIX1_N 3
-#define MATRIX2_M 2
-#define MATRIX2_N 3
-int mR[MATRIX1_M][MATRIX1_N] = {0};
+#define MATRIX_M 2
+#define MATRIX_N 3
+
+int mR[MATRIX_M][MATRIX_N] = {0};
 
 // Description  : affiche une matrice à l'écran
 // Précondition : matrice non-nulle
 // Postcondition: N/A
-void printMatrix(int m0[MATRIX1_M][MATRIX1_N]){
-    for (int i = 0; i < MATRIX1_M; i++){
+void printMatrix(int m0[MATRIX_M][MATRIX_N]){
+    for (int i = 0; i < MATRIX_M; i++){
         printf("[");
-        for (int j = 0; j < MATRIX1_N; j++){
+        for (int j = 0; j < MATRIX_N; j++){
             int x = m0[i][j];
             printf("%d ", x);
         }
@@ -32,23 +31,17 @@ void printMatrix(int m0[MATRIX1_M][MATRIX1_N]){
 // Précondition : pour recevoir un resultat, les matrices doivent etre de meme taille
 //                Les matrices doivent etre plus petites que 99 par 99 
 // Postcondition: N/A
-void matrixAdd(int m1[MATRIX1_M][MATRIX1_N], int m2[MATRIX2_M][MATRIX2_N]){
-    if (MATRIX1_M == MATRIX2_M && MATRIX1_N ==  MATRIX2_N){
-        for (int i = 0; i <= MATRIX1_M; i++){
-            for (int j = 0; j <= MATRIX1_N; j++){
-                mR[i][j] = m1[i][j] + m2[i][j];
-            }
+void matrixAdd(int m1[MATRIX_M][MATRIX_N], int m2[MATRIX_M][MATRIX_N]){
+    for (int i = 0; i <= MATRIX_M; i++){
+        for (int j = 0; j <= MATRIX_N; j++){
+            mR[i][j] = m1[i][j] + m2[i][j];
         }
-    //printMatrix(mR);
-    }
-    else{
-        //printf("Matrice(s) de mauvaise(s) taille(s)!");
     }
 }
 
-int matrixEquality(int m1[MATRIX1_M][MATRIX1_N], int m2[MATRIX1_M][MATRIX1_N]) {
-    for (int i = 0; i < MATRIX1_M; i++) {
-        for (int j = 0; j < MATRIX1_N; j++) {
+int matrixEquality(int m1[MATRIX_M][MATRIX_N], int m2[MATRIX_M][MATRIX_N]) {
+    for (int i = 0; i < MATRIX_M; i++) {
+        for (int j = 0; j < MATRIX_N; j++) {
             if (m1[i][j] != m2[i][j]) {
                 return 0;
             }
@@ -57,7 +50,7 @@ int matrixEquality(int m1[MATRIX1_M][MATRIX1_N], int m2[MATRIX1_M][MATRIX1_N]) {
     return 1;
 }
 
-void matrixAddTest(int m1[MATRIX1_M][MATRIX2_N], int m2[MATRIX1_M][MATRIX2_N]) {
+void matrixAddTest(int m1[MATRIX_M][MATRIX_N], int m2[MATRIX_M][MATRIX_N]) {
     if (matrixEquality(m1, m2) == 1) {
         printf("\nTest passed\n");
     } else {
@@ -66,9 +59,9 @@ void matrixAddTest(int m1[MATRIX1_M][MATRIX2_N], int m2[MATRIX1_M][MATRIX2_N]) {
 }
 
 int main(){
-    int m1[MATRIX1_M][MATRIX1_N] = {{1,2,3}, {4,5,6}};
-    int m2[MATRIX2_M][MATRIX2_N] = {{6,5,4}, {3,2,1}};
-    int mT[MATRIX1_M][MATRIX2_N] = {{7,7,7}, {7,7,7}};
+    int m1[MATRIX_M][MATRIX_N] = {{1,2,3}, {4,5,6}};
+    int m2[MATRIX_M][MATRIX_N] = {{6,5,4}, {3,2,1}};
+    int mT[MATRIX_M][MATRIX_N] = {{7,7,7}, {7,7,7}};
     
     matrixAdd(m1, m2); // modifie mR (global)
 

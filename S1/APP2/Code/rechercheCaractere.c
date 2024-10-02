@@ -50,4 +50,5 @@ int main(){
     charFindTest('e', str2, -1);
     charFindTest('r', str2, 6);
     charFindTest('a', str3, 0);
+
 }
