@@ -10,7 +10,6 @@ Description: Fonctions qui font de l'aritmetique & des operations sur le matrice
 
 #define MATRIX_M 2
 #define MATRIX_N 3
-
 int mR[MATRIX_M][MATRIX_N] = {0};
 
 // Description  : affiche une matrice à l'écran
@@ -28,8 +27,7 @@ void printMatrix(int m0[MATRIX_M][MATRIX_N]){
 }
 
 // Description  : additionne 2 matrices 
-// Précondition : pour recevoir un resultat, les matrices doivent etre de meme taille
-//                Les matrices doivent etre plus petites que 99 par 99 
+// Précondition : m1 et m2 sont des matrices de taille 2x3
 // Postcondition: N/A
 void matrixAdd(int m1[MATRIX_M][MATRIX_N], int m2[MATRIX_M][MATRIX_N]){
     for (int i = 0; i <= MATRIX_M; i++){
