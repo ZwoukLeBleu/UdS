@@ -8,18 +8,17 @@ Description: Fonctions qui font de l'aritmetique & des operations sur le matrice
 
 #include <stdio.h>
 #define MATRIX_SIZE 3
-
 int mR[MATRIX_SIZE][MATRIX_SIZE] = {0};
 
 
 // Description  : affiche une matrice à l'écran
 // Précondition : matrice non-nulle
 // Postcondition: N/A
-void printMatrix(){
+void printMatrix(int m0[MATRIX_SIZE][MATRIX_SIZE]){
     for (int i = 0; i < MATRIX_SIZE; i++){
 		printf("[");
         for (int j = 0; j < MATRIX_SIZE; j++){
-            int x = mR[i][j];
+            int x = m0[i][j];
             printf("%d ", x);
         }
 		printf("]\n");
@@ -27,7 +26,7 @@ void printMatrix(){
 }
 
 // Description  : multiplie 2 matrices 
-// Précondition : pour recevoir un resultat, le nombre de colonnes de la 1ere matrice doit etre egal au nombre de lignes de la 2eme matrice.
+// Précondition : m1 et m2 sont des matrices de taille 3x3
 // Postcondition: N/A
 void matrixMul(int m1[MATRIX_SIZE][MATRIX_SIZE], int m2[MATRIX_SIZE][MATRIX_SIZE]){
     for (int i = 0; i <= MATRIX_SIZE; i++){
@@ -38,7 +37,6 @@ void matrixMul(int m1[MATRIX_SIZE][MATRIX_SIZE], int m2[MATRIX_SIZE][MATRIX_SIZE
             }
         }
     }
-    printMatrix();
 }
 
 int matrixEquality(int m1[MATRIX_SIZE][MATRIX_SIZE], int m2[MATRIX_SIZE][MATRIX_SIZE]) {
@@ -65,6 +63,15 @@ int main(){
     int m2[MATRIX_SIZE][MATRIX_SIZE] = {{1,2,3}, {4,5,6}, {7,8,9}};
     int mT[MATRIX_SIZE][MATRIX_SIZE] = {{30, 36, 42}, {66, 81, 96}, {102, 126, 150}};
     
-    matrixMul(m1, m2);
+    matrixMul(m1, m2); // modifie mR (global)
+    
+    printf("Matrice 1 :\n");
+    printMatrix(m1);
+    printf("\nMatrice 2 :\n");
+    printMatrix(m2);
+    printf("\nMatrice resultante attendu :\n");
+    printMatrix(mT);
+    printf("\nMatrice resultante obtenu :\n");
+    printMatrix(mR);
     matrixMulTest(mT, mR);
 }
