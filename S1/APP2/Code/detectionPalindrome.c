@@ -38,7 +38,8 @@ void palindromeTest(char str[], int val){
 }
 
 int main(){
-    palindromeTest("racecar", 1);
-    palindromeTest("gaming", 0);
-    palindromeTest("KAYAK", 1);
+    palindromeTest("allo\0", 0);
+    palindromeTest("racecar\0", 1);
+    palindromeTest("a\0", 1);
+    palindromeTest("\0", 0);
 }

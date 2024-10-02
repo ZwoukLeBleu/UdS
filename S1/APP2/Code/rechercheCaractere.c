@@ -43,12 +43,9 @@ void charFindTest(char a, char str[], int val){
 }
 
 int main(){
-	char str1[] = "anticonstitutionnellement\0";
-	char str2[] = "bonjour\0";
-	char str3[] = "allocommentcava\0";
-    charFindTest('n', str1, 1);
-    charFindTest('e', str2, -1);
-    charFindTest('r', str2, 6);
-    charFindTest('a', str3, 0);
+    charFindTest('a', "allo\0", 0);
+    charFindTest('b', "allo\0", -1);
+    charFindTest('u', "salut\0", 3);
+    //charFindTest('', "allo\0", 0);
 
 }

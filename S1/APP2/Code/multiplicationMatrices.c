@@ -43,6 +43,7 @@ int matrixEquality(int m1[MATRIX_SIZE][MATRIX_SIZE], int m2[MATRIX_SIZE][MATRIX_
     for (int i = 0; i < MATRIX_SIZE; i++) {
         for (int j = 0; j < MATRIX_SIZE; j++) {
             if (m1[i][j] != m2[i][j]) {
+                printf("i=%d, j=%d", i ,j);
                 return 0;
             }
         }
@@ -50,11 +51,19 @@ int matrixEquality(int m1[MATRIX_SIZE][MATRIX_SIZE], int m2[MATRIX_SIZE][MATRIX_
     return 1;
 }
 
-void matrixMulTest(int m1[MATRIX_SIZE][MATRIX_SIZE], int m2[MATRIX_SIZE][MATRIX_SIZE]) {
-    if (matrixEquality(m1, m2) == 1) {
-        printf("Test passed\n");
+void matrixMulTest(int m1[MATRIX_SIZE][MATRIX_SIZE], int m2[MATRIX_SIZE][MATRIX_SIZE], int mT[MATRIX_SIZE][MATRIX_SIZE], int mR[MATRIX_SIZE][MATRIX_SIZE]) {
+    if (matrixEquality(mT, mR) == 1) {
+        printf("Matrice 1 :\n");
+        printMatrix(m1);
+        printf("\nMatrice 2 :\n");
+        printMatrix(m2);
+        printf("\nMatrice resultante attendu :\n");
+        printMatrix(mT);
+        printf("\nMatrice resultante obtenu :\n");
+        printMatrix(mR);
+        printf("Test passed\n\n\n");
     } else {
-        printf("Test failed\n");
+        printf("Test failed\n\n\n");
     }
 }
 
@@ -62,16 +71,16 @@ int main(){
     int m1[MATRIX_SIZE][MATRIX_SIZE] = {{1,2,3}, {4,5,6}, {7,8,9}};
     int m2[MATRIX_SIZE][MATRIX_SIZE] = {{1,2,3}, {4,5,6}, {7,8,9}};
     int mT[MATRIX_SIZE][MATRIX_SIZE] = {{30, 36, 42}, {66, 81, 96}, {102, 126, 150}};
+    int mV[MATRIX_SIZE][MATRIX_SIZE] = {{0,0,0}, {0,0,0}, {0,0,0}};
+    int mV2[MATRIX_SIZE][MATRIX_SIZE] = {{0,0,0}, {0,0,0}, {0,0,0}};
+
     
     matrixMul(m1, m2); // modifie mR (global)
-    
-    printf("Matrice 1 :\n");
-    printMatrix(m1);
-    printf("\nMatrice 2 :\n");
-    printMatrix(m2);
-    printf("\nMatrice resultante attendu :\n");
-    printMatrix(mT);
-    printf("\nMatrice resultante obtenu :\n");
-    printMatrix(mR);
-    matrixMulTest(mT, mR);
+    matrixMulTest(m1, m2, mT, mR);
+
+    matrixMul(m2, mV);
+    matrixMulTest(mV, m2, mV, mR);
+
+    matrixMul(mV, mV);
+    matrixMulTest(mV, mV, mV, mR);
 }
