@@ -72,8 +72,6 @@ int main(){
     int m2[MATRIX_SIZE][MATRIX_SIZE] = {{1,2,3}, {4,5,6}, {7,8,9}};
     int mT[MATRIX_SIZE][MATRIX_SIZE] = {{30, 36, 42}, {66, 81, 96}, {102, 126, 150}};
     int mV[MATRIX_SIZE][MATRIX_SIZE] = {{0,0,0}, {0,0,0}, {0,0,0}};
-    int mV2[MATRIX_SIZE][MATRIX_SIZE] = {{0,0,0}, {0,0,0}, {0,0,0}};
-
     
     matrixMul(m1, m2); // modifie mR (global)
     matrixMulTest(m1, m2, mT, mR);
