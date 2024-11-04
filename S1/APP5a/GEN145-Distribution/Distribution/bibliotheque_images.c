@@ -16,9 +16,12 @@ struct RGB imageRGB1[MAX_HAUTEUR][MAX_LARGEUR];
 struct RGB imageRGB2[MAX_HAUTEUR][MAX_LARGEUR];
 
 struct MetaData meta = { "Domingo Palao", "2023-10-28", "Sherbrooke" };
-struct MetaData meta2 = { "", " 213", "shebrok"};
+struct MetaData meta2 = { "dwadwa", "213", "shebrook"};
 
-int matrice[MAX_HAUTEUR][MAX_LARGEUR] = {{0, 1},{2, 8}};
+int matrice[MAX_HAUTEUR][MAX_LARGEUR] = {{142, 0},{82, 255}};
+
+struct RGB mat_color[MAX_HAUTEUR][MAX_LARGEUR] = {{0}};
+
 
 
 int pgm_lire(char nom_fichier[], int matrice[MAX_HAUTEUR][MAX_LARGEUR], 
@@ -31,14 +34,35 @@ int pgm_lire(char nom_fichier[], int matrice[MAX_HAUTEUR][MAX_LARGEUR],
         return ERREUR_FICHIER;
         
     }
-
-     size_t len = 0;
-    //ssize_t read;
-    char * line = NULL;
-    /*while ((read = getline(&line, &len, pgm)) != -1) {
-        printf("Retrieved line of length %zu:\n", read);
-        printf("%s", line);
+    /*size_t result_comment = fread(p_metadonnees, sizeof(struct MetaData), 1, pgm);
+    if (result_comment != 1){
+        return ERREUR_FICHIER;
     }*/
+
+
+
+    //printf("%s; %s; %s", p_metadonnees->auteur, p_metadonnees->dateCreation, p_metadonnees->lieuCreation);
+
+
+    printf("1\n");
+    size_t result = fread(matrice, sizeof(__uint16_t), MAX_HAUTEUR*MAX_LARGEUR, pgm);
+
+    /*if (result != MAX_HAUTEUR*MAX_LARGEUR){
+        return ERREUR_FICHIER;
+    }*/
+    printf("2\n");
+    for (int i = 1; i < p_colonnes; i++){
+        for (int j = 0; j < p_lignes; j++){
+            //printf("%d ", matrice[i][j]);
+
+        }
+        //printf("%d ", i);
+        //printf("\n");
+        
+    }
+
+    printf("3\n");
+    printf("%zd\n", result);
 
     fclose(pgm);
     return OK;
@@ -52,16 +76,30 @@ int pgm_ecrire(char nom_fichier[], int matrice[MAX_HAUTEUR][MAX_LARGEUR],
     pgm = fopen(nom_fichier, "w");
 
     //metadata
-    fprintf(pgm, "#%s; %s; %s\n", metadonnees.auteur, metadonnees.dateCreation, metadonnees.lieuCreation);
+    size_t result_comment = fprintf(pgm, "# %s; %s; %s\n", metadonnees.auteur, metadonnees.dateCreation, metadonnees.lieuCreation);
+    /*if (result_comment != ){ //return ERREUR_FICHIER;
+        printf("%zd\n", sizeof(struct MetaData));
+    printf("%zd\n", result_comment);
+     }*/
+
     //headings
-    fprintf(pgm, "P2\n%d %d\n%d\n", colonnes, lignes, maxval);
+    size_t result_header = fprintf(pgm, "P2\n%d %d\n%d\n", colonnes, lignes, maxval);
+    //if (result_header != )
+    //printf("%zd\n", result_header);
+
     //image data (kinda raw)
+    size_t result_data;
     for (int i = 0; i < lignes; i++){
         for (int j = 0; j < colonnes; j++){
-            fprintf(pgm, "%d ", matrice[i][j]);
+            result_data += fprintf(pgm, "%d ", matrice[i][j]);
         }
-        fprintf(pgm, "\n");
+        result_data += fprintf(pgm, "\n");
+
     }
+    //printf("%zd\n", result_data);
+
+    //if (result_data != lignes*colonnes){ return ERREUR_FICHIER; }
+
     fclose(pgm);
     return OK;
 }
@@ -69,22 +107,65 @@ int pgm_ecrire(char nom_fichier[], int matrice[MAX_HAUTEUR][MAX_LARGEUR],
 
 
 int pgm_creer_histogramme(int matrice[MAX_HAUTEUR][MAX_LARGEUR], int lignes, int colonnes, int histogramme[MAX_VALEUR+1]){
+    if (histogramme == NULL){ return ERREUR; }
+    else if (lignes < 0 || colonnes < 0 || lignes > MAX_LARGEUR || colonnes > MAX_HAUTEUR){ return ERREUR_TAILLE; }
+    
     for (int i = 0; i < lignes; i++){
         for (int j = 0; j < colonnes; j++){
             histogramme[matrice[i][j]] += 1;
         }
     }
-    for (int k = 0; k <= 255; k++){
-        printf("NBR DE %d: %d\n", k, histogramme[k]);
-    }
     return OK;
 }
+
+
+int pgm_eclaircir_noircir(int matrice[MAX_HAUTEUR][MAX_LARGEUR], int lignes, int colonnes, int maxval, int valeur){
+    for (int i = 0; i < lignes; i++){
+        for (int j = 0; j < colonnes; j++){
+            matrice[i][j] = matrice[i][j] + valeur;
+            if (matrice[i][j] > maxval){ matrice[i][j] = maxval; }
+            if (matrice[i][j] < 0){ matrice[i][j] = 0; }
+        }
+    }
+    
+
+    return OK;
+}
+
+int ppm_ecrire(char nom_fichier[], struct RGB matrice[MAX_HAUTEUR][MAX_LARGEUR], int lignes, int colonnes, int maxval, struct MetaData metadonnees){
+    FILE *ppm = NULL;
+    ppm = fopen(nom_fichier, "w");
+
+    //metadata
+    fprintf(ppm, "#%s; %s; %s\n", metadonnees.auteur, metadonnees.dateCreation, metadonnees.lieuCreation);
+    //headings
+    fprintf(ppm, "P3\n%d %d\n%d\n", colonnes, lignes, maxval);
+    //image data (kinda raw)
+    for (int i = 0; i < lignes; i++){
+        for (int j = 0; j < colonnes; j++){
+            fprintf(ppm, "%d %d %d ", matrice[i][j].valeurR, matrice[i][j].valeurG, matrice[i][j].valeurB);
+        }
+        fprintf(ppm, "\n");
+
+    }
+    fclose(ppm);
+    return OK;
+}
+
+
 
 int main()
 {
     int lignes1, colonnes1;
     int lignes2, colonnes2;
-    int maxval;
+    int *lignes3 = 2;
+    int *colonnes3 = 2;
+    int p_matrice[MAX_HAUTEUR][MAX_LARGEUR];
+
+    //lignes3 = MAX_HAUTEUR;
+    //colonnes3 = MAX_LARGEUR;
+
+    int maxval = 255;
     int histogramme[MAX_VALEUR+1] = {0};
     char nom[MAX_CHAINE];
     struct MetaData metadonnees;
@@ -93,9 +174,13 @@ int main()
 
     printf("-> Debut!\n");
 
-    //pgm_ecrire("superidol.pgm", matrice, 2, 2, 255, meta2);
+    pgm_ecrire("superidol.pgm", matrice, 2, 2, 255, meta2);
+    //printf("1");
 
-    pgm_creer_histogramme(matrice, 2, 2, histogramme);
+    pgm_lire("superidol.pgm", p_matrice, &lignes3, &colonnes3, &maxval, &meta);
+    //pgm_creer_histogramme(matrice, 2, 2, histogramme);
+
+    //ppm_ecrire("supercolor.ppm", mat_color, 256, 256, 255, meta2);
 
     printf("-> Fin!\n");
 
