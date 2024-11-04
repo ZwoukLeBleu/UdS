@@ -159,19 +159,20 @@ int pgm_pivoter90(int matrice[MAX_HAUTEUR][MAX_LARGEUR], int *p_lignes, int *p_c
     }
     for(unsigned int s = 0; s < iteration; s++){
         for(unsigned int i = 0; i <= *p_lignes; i++){
-        for(unsigned int j = 0; j <= *p_colonnes; j++){
-            for(unsigned int k = 0; k <= *p_lignes; k++){
-                tempMatrice[j][k] = matrice[i][j];
+            for(unsigned int j = 0; j <= *p_colonnes; j++){
+                for(unsigned int k = 0; k <= *p_lignes; k++){
+                    tempMatrice[j][k] = matrice[i][j];
+                }
             }
         }
-    }
+        int *p_tempLigne = p_lignes;
+        p_lignes = p_colonnes;
+        p_colonnes = p_lignes;
     }
     
 
     matrice = tempMatrice;
-    int *p_tempLigne = p_lignes;
-    p_lignes = p_colonnes;
-    p_colonnes = p_lignes;
+
 
     return OK;
 }
