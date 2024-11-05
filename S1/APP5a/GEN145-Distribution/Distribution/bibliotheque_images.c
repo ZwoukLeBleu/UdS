@@ -80,14 +80,14 @@ int pgm_lire(char nom_fichier[], int matrice[MAX_HAUTEUR][MAX_LARGEUR],
         return ERREUR_FICHIER;
     }
     
-    for (int i = 0; i < *p_lignes; i++){
+    /*for (int i = 0; i < *p_lignes; i++){
         for (int j = 0; j < *p_colonnes; j++){
             printf("%d ", matrice[i][j]);
         }
         //printf("%d ", i);
         printf("\n");
         
-    }
+    }*/
 
     fclose(pgm);
     return OK;
@@ -532,20 +532,24 @@ int main()
 
     printf("-> Debut!\n");
 
-    pgm_ecrire("superidol.pgm", matrice, 3, 2, 255, meta);
+    //pgm_ecrire("superidol.pgm", matrice, 3, 2, 255, meta);
     //printf("1");
 
-    int test = pgm_lire("superidol.pgm", p_matrice, &lignes3, &colonnes3, &maxval, &metadonnees);
+    int test = pgm_lire("front.pgm", matrice, &lignes3, &colonnes3, &maxval, &metadonnees);
+
     //printf("%d\n", test);
     //pgm_creer_histogramme(matrice, 2, 2, histogramme);
 
     //ppm_ecrire("supercolor.ppm", mat_color, 3, 3, 255, meta2);
-    ppm_lire("supercolor.ppm", imageRGB1, &lignes1, &colonnes1, &maxval, &metadonnees);
+    //ppm_lire("supercolor.ppm", imageRGB1, &lignes1, &colonnes1, &maxval, &metadonnees);
     //ppm_copier(imageRGB1, 3, 3, imageRGB2, &lignes2, &colonnes2);
+    /*ppm_pivoter90(imageRGB1, &lignes1, &colonnes1, 0);
     ppm_pivoter90(imageRGB1, &lignes1, &colonnes1, 0);
     ppm_pivoter90(imageRGB1, &lignes1, &colonnes1, 0);
-    ppm_pivoter90(imageRGB1, &lignes1, &colonnes1, 0);
-    ppm_pivoter90(imageRGB1, &lignes1, &colonnes1, 0);
+    ppm_pivoter90(imageRGB1, &lignes1, &colonnes1, 0);*/
+    //pgm_pivoter90(matrice, &lignes3, &colonnes3, SENS_HORAIRE);
+
+    pgm_ecrire("front2.pgm", matrice, lignes3, colonnes3, maxval, metadonnees);
 
 
     printf("-> Fin!\n");
