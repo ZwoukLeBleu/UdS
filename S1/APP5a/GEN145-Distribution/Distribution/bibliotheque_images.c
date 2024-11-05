@@ -158,22 +158,21 @@ int pgm_pivoter90(int matrice[MAX_HAUTEUR][MAX_LARGEUR], int *p_lignes, int *p_c
         iteration = 3;
     }
     for(unsigned int s = 0; s < iteration; s++){
-        for(unsigned int i = 0; i <= *p_lignes; i++){
-            for(unsigned int j = 0; j <= *p_colonnes; j++){
-                for(unsigned int k = 0; k <= *p_lignes; k++){
-                    tempMatrice[j][k] = matrice[i][j];
-                }
+        for(unsigned int i = 0; i < *p_lignes; i++){
+            for(unsigned int j = 0; j < *p_colonnes; j++){
+                tempMatrice[j][i] = matrice[*p_lignes-1-i][j];
             }
         }
-        int *p_tempLigne = p_lignes;
-        p_lignes = p_colonnes;
-        p_colonnes = p_lignes;
+        int tempLigne = *p_lignes;
+        *p_lignes = *p_colonnes;
+        *p_colonnes = tempLigne;
+
+        for(unsigned int i = 0; i < *p_lignes; i++){
+            for(unsigned int j = 0; j < *p_colonnes; j++){
+                matrice[i][j] = tempMatrice[i][j];
+            }
+        }
     }
-    
-
-    matrice = tempMatrice;
-
-
     return OK;
 }
 
@@ -243,7 +242,7 @@ int pgm_extraire(int matrice[MAX_HAUTEUR][MAX_LARGEUR], int lignes1, int colonne
     
 }
 
-int main()
+/*int main()
 {
     int lignes1, colonnes1;
     int lignes2, colonnes2;
@@ -263,7 +262,7 @@ int main()
     printf("-> Fin!\n");
 
     return 0;
-}
+}*/
 
 
 
