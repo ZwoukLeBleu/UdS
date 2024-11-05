@@ -35,7 +35,6 @@ int pgm_lire(char nom_fichier[], int matrice[MAX_HAUTEUR][MAX_LARGEUR],
         return ERREUR_FICHIER;
         
     }
-    printf("1\n");
     char fuckyou[50];
     size_t result_comment;
     //result_comment += fscanf(pgm, "# %[^;];", p_metadonnees->auteur);
@@ -45,12 +44,10 @@ int pgm_lire(char nom_fichier[], int matrice[MAX_HAUTEUR][MAX_LARGEUR],
     result_comment += fscanf(pgm, "# %[^;]; %[^;]; %s", p_metadonnees->auteur, p_metadonnees->dateCreation, p_metadonnees->lieuCreation);
 
     if (result_comment != 3){
-        //return ERREUR_FICHIER;
+        return ERREUR_FICHIER;
         //printf("yooooo");
     }
     //strcat(p_metadonnees->auteur, fuckyou);
-    printf("%s, %s, %s\n", p_metadonnees->auteur, p_metadonnees->dateCreation, p_metadonnees->lieuCreation);
-
     fscanf(pgm, "%s", fuckyou);
     if (fuckyou[0] != 'P' && fuckyou[1] != '2'){
         //return ERREUR_FORMAT;
@@ -77,18 +74,8 @@ int pgm_lire(char nom_fichier[], int matrice[MAX_HAUTEUR][MAX_LARGEUR],
     }
     if (result_data != *p_colonnes * *p_lignes)
     {
-        printf("core\n");
         return ERREUR_FICHIER;
     }
-    
-    /*for (int i = 0; i < *p_lignes; i++){
-        for (int j = 0; j < *p_colonnes; j++){
-            printf("%d ", matrice[i][j]);
-        }
-        //printf("%d ", i);
-        printf("\n");
-        
-    }*/
 
     fclose(pgm);
     return OK;
@@ -322,7 +309,6 @@ int ppm_lire(char nom_fichier[], struct RGB matrice[MAX_HAUTEUR][MAX_LARGEUR], i
         return ERREUR_FICHIER;
         
     }
-    printf("1\n");
     char fuckyou[50];
     size_t result_comment;
     result_comment += fscanf(pgm, "# %[^;];", p_metadonnees->auteur);
@@ -331,10 +317,9 @@ int ppm_lire(char nom_fichier[], struct RGB matrice[MAX_HAUTEUR][MAX_LARGEUR], i
     result_comment += fscanf(pgm, " %s", p_metadonnees->lieuCreation);
 
     if (result_comment != 3){
-        //return ERREUR_FICHIER;
+        return ERREUR_FICHIER;
     }
     //strcat(p_metadonnees->auteur, fuckyou);
-    printf("%s, %s, %s\n", p_metadonnees->auteur, p_metadonnees->dateCreation, p_metadonnees->lieuCreation);
 
     fscanf(pgm, "%s", fuckyou);
     if (fuckyou[0] != 'P' && fuckyou[1] != '2'){
@@ -361,19 +346,9 @@ int ppm_lire(char nom_fichier[], struct RGB matrice[MAX_HAUTEUR][MAX_LARGEUR], i
     }
     if (result_data != *p_colonnes * *p_lignes)
     {
-        printf("core\n");
-        //return ERREUR_FICHIER;
+        return ERREUR_FICHIER;
     }
     
-    for (int i = 0; i < *p_lignes; i++){
-        for (int j = 0; j < *p_colonnes; j++){
-            printf("%d %d %d ", matrice[i][j].valeurR, matrice[i][j].valeurG, matrice[i][j].valeurB);
-        }
-        //printf("%d ", i);
-        printf("\n");
-        
-    }
-    printf("\n\n");
 
     fclose(pgm);
     return OK;
@@ -416,9 +391,7 @@ int ppm_copier(struct RGB matrice1[MAX_HAUTEUR][MAX_LARGEUR], int lignes1, int c
             matrice2[i][j].valeurR = matrice1[i][j].valeurR;
             matrice2[i][j].valeurG = matrice1[i][j].valeurG;
             matrice2[i][j].valeurB = matrice1[i][j].valeurB;
-            printf("%d %d %d ", matrice2[i][j].valeurR, matrice2[i][j].valeurG, matrice2[i][j].valeurB);
         }
-    printf("\n");
     }
     return OK;
 }
@@ -500,62 +473,7 @@ int ppm_pivoter90(struct RGB matrice[MAX_HAUTEUR][MAX_LARGEUR], int *p_lignes, i
             }
         }
     }
-    for(unsigned int i=0; i < *p_lignes; i++){
-        for(unsigned int j = 0; j < *p_colonnes; j++){
-            printf("%d %d %d ", matrice[i][j].valeurR, matrice[i][j].valeurG, matrice[i][j].valeurB);
-        }
-        printf("\n");
-    }
-    printf("\n");
     return OK;
-}
-
-
-
-
-int main()
-{
-    int lignes1, colonnes1;
-    int lignes2, colonnes2;
-    int *lignes3;
-    int *colonnes3;
-    int p_matrice[MAX_HAUTEUR][MAX_LARGEUR] = {{0}};
-
-    //lignes3 = MAX_HAUTEUR;
-    //colonnes3 = MAX_LARGEUR;
-
-    int maxval = 255;
-    int histogramme[MAX_VALEUR+1] = {0};
-    char nom[MAX_CHAINE];
-    struct MetaData metadonnees;
-
-	int retour;
-
-    printf("-> Debut!\n");
-
-    //pgm_ecrire("superidol.pgm", matrice, 3, 2, 255, meta);
-    //printf("1");
-
-    int test = pgm_lire("front.pgm", matrice, &lignes3, &colonnes3, &maxval, &metadonnees);
-
-    //printf("%d\n", test);
-    //pgm_creer_histogramme(matrice, 2, 2, histogramme);
-
-    //ppm_ecrire("supercolor.ppm", mat_color, 3, 3, 255, meta2);
-    //ppm_lire("supercolor.ppm", imageRGB1, &lignes1, &colonnes1, &maxval, &metadonnees);
-    //ppm_copier(imageRGB1, 3, 3, imageRGB2, &lignes2, &colonnes2);
-    /*ppm_pivoter90(imageRGB1, &lignes1, &colonnes1, 0);
-    ppm_pivoter90(imageRGB1, &lignes1, &colonnes1, 0);
-    ppm_pivoter90(imageRGB1, &lignes1, &colonnes1, 0);
-    ppm_pivoter90(imageRGB1, &lignes1, &colonnes1, 0);*/
-    //pgm_pivoter90(matrice, &lignes3, &colonnes3, SENS_HORAIRE);
-
-    pgm_ecrire("front2.pgm", matrice, lignes3, colonnes3, maxval, metadonnees);
-
-
-    printf("-> Fin!\n");
-
-    return 0;
 }
 
 
