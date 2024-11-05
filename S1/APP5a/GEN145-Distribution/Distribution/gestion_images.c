@@ -15,9 +15,11 @@ struct RGB imageRGB1[MAX_HAUTEUR][MAX_LARGEUR];
 struct RGB imageRGB2[MAX_HAUTEUR][MAX_LARGEUR];
 
 struct MetaData meta = { "Domingo Palao", "2023-10-28", "Sherbrooke" };
-struct MetaData meta2 = { "", " 213", "shebrok"};
+struct MetaData meta2 = { "dwadwa", "213", "shebrook"};
 
-int matrice[MAX_HAUTEUR][MAX_LARGEUR] = {{0, 1},{2, 3}};
+int matrice[MAX_HAUTEUR][MAX_LARGEUR] = {{142, 3},{82, 255},{3, 55}};
+
+struct RGB mat_color[MAX_HAUTEUR][MAX_LARGEUR] = {{1, 2, 3},{4, 5, 6},{7, 8, 9}};
 
 int main()
 {
@@ -29,12 +31,16 @@ int main()
     struct MetaData metadonnees;
 
 	int retour;
+    char nom_fichier[] = "/home/zwouklebleu/Documents/Prg/UdS/S1/APP5a/GEN145-Distribution/Distribution/Sherbrooke_Frontenac_nuit.pgm";
 
     printf("-> Debut!\n");
 
-    pgm_ecrire("superidol.pgm", matrice, 2, 2, 255, meta2);
+    int test = pgm_lire(nom_fichier, image1, &lignes1, &colonnes1, &maxval, &metadonnees);
+    int test2 = pgm_pivoter90(image1, &lignes1, &colonnes1, SENS_HORAIRE);
+    printf("test: %d\n", test2);
+    pgm_ecrire("/home/zwouklebleu/Documents/Prg/UdS/S1/APP5a/GEN145-Distribution/Distribution/test.pgm", image1, lignes1, colonnes1, maxval, metadonnees);
 
-    //pgm_creer_histogramme(matrice, 2, 2, histogramme);
+
 
     printf("-> Fin!\n");
 
