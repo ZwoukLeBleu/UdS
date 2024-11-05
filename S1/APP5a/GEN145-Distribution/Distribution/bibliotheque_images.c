@@ -174,6 +174,167 @@ int ppm_ecrire(char nom_fichier[], struct RGB matrice[MAX_HAUTEUR][MAX_LARGEUR],
 }
 
 
+int pgm_copier(int matrice1[MAX_HAUTEUR][MAX_LARGEUR], int lignes1, int colonnes1, int matrice2[MAX_HAUTEUR][MAX_LARGEUR], int *p_lignes2, int *p_colonnes2){
+    // Vérification des tailles de format
+    if(lignes1 > MAX_HAUTEUR || lignes1 < 0){
+        return ERREUR_TAILLE;
+    }
+    if(colonnes1 > MAX_LARGEUR || colonnes1 < 0){
+        return ERREUR_TAILLE;
+    }
+
+    *p_lignes2 = lignes1;
+    *p_colonnes2 = colonnes1;
+
+    for(unsigned int i=0; i <= lignes1; i++){
+        for(unsigned int j = 0; j <= colonnes1; j++){
+            matrice2[i][j] = matrice1[i][j];
+        }
+    }
+    return OK;
+}
+
+int pgm_sont_identiques(int matrice1[MAX_HAUTEUR][MAX_LARGEUR], int lignes1, int colonnes1, int matrice2[MAX_HAUTEUR][MAX_LARGEUR], int lignes2, int colonnes2){
+    if(colonnes1 != colonnes2){
+        return ERREUR_TAILLE;
+    }
+
+    if(lignes1 != lignes2){
+        return ERREUR_TAILLE;
+    }
+
+    if(colonnes1 > MAX_LARGEUR || colonnes1 < 0){
+        return ERREUR_TAILLE;
+    }
+
+    if(lignes1 > MAX_HAUTEUR || lignes1 < 0){
+        return ERREUR_TAILLE;
+    }
+
+    if(colonnes2 > MAX_LARGEUR || colonnes2 < 0){
+        return ERREUR_TAILLE;
+    }
+
+    if(lignes2 > MAX_HAUTEUR || lignes2 < 0){
+        return ERREUR_TAILLE;
+    }
+
+
+    for(unsigned int i = 0; i <= lignes1; i++){
+        for(unsigned int j = 0; j <= colonnes1; j++){
+            if(matrice1[i][j] != matrice2[i][j]){
+                return ERREUR;
+            }
+        }
+    }
+
+    return OK;
+
+}
+
+int pgm_pivoter90(int matrice[MAX_HAUTEUR][MAX_LARGEUR], int *p_lignes, int *p_colonnes, int sens){
+    if(sens >SENS_HORAIRE || sens < SENS_ANTIHORAIRE){
+        return ERREUR;
+    }
+
+    if(*p_colonnes > MAX_LARGEUR || *p_colonnes < 0){
+        return ERREUR_TAILLE;
+    }
+
+    if(*p_lignes > MAX_HAUTEUR || *p_lignes < 0){
+        return ERREUR_TAILLE;
+    }
+
+    int tempMatrice[MAX_HAUTEUR][MAX_LARGEUR] = {0};
+    int iteration = 1;
+    if(sens == SENS_ANTIHORAIRE){
+        iteration = 3;
+    }
+    for(unsigned int s = 0; s < iteration; s++){
+        for(unsigned int i = 0; i <= *p_lignes; i++){
+            for(unsigned int j = 0; j <= *p_colonnes; j++){
+                for(unsigned int k = 0; k <= *p_lignes; k++){
+                    tempMatrice[j][k] = matrice[i][j];
+                }
+            }
+        }
+        int *p_tempLigne = p_lignes;
+        p_lignes = p_colonnes;
+        p_colonnes = p_lignes;
+    }
+    
+
+    matrice = tempMatrice;
+
+
+    return OK;
+}
+
+int pgm_creer_negatif(int matrice[MAX_HAUTEUR][MAX_LARGEUR], int lignes, int colonnes, int maxval){
+    if(maxval > MAX_VALEUR || maxval < 0){
+        return ERREUR;
+    }
+
+    if(colonnes > MAX_LARGEUR || colonnes < 0){
+        return ERREUR_TAILLE;
+    }
+
+    if(lignes > MAX_HAUTEUR || lignes < 0){
+        return ERREUR_TAILLE;
+    }
+
+    for(unsigned int i = 0; i < lignes; i++){
+        for(unsigned int j = 0; j < colonnes; j++){
+            matrice[i][j] = maxval - matrice[i][j];
+            if(matrice[i][j] < 0 ){
+                matrice[i][j] = 0;
+            }
+        }
+    }
+
+    return OK;
+    
+}
+
+int pgm_extraire(int matrice[MAX_HAUTEUR][MAX_LARGEUR], int lignes1, int colonnes1, int lignes2, int colonnes2, int *p_lignes, int *p_colonnes){
+    if(colonnes1 > MAX_LARGEUR || colonnes1 < 0){
+        return ERREUR_TAILLE;
+    }
+
+    if(lignes1 > MAX_HAUTEUR || lignes1 < 0){
+        return ERREUR_TAILLE;
+    }
+
+    if(colonnes2 > MAX_LARGEUR || colonnes2 < 0){
+        return ERREUR_TAILLE;
+    }
+
+    if(lignes2 > MAX_HAUTEUR || lignes2 < 0){
+        return ERREUR_TAILLE;
+    }
+
+    if(lignes1 > lignes2) return ERREUR_TAILLE;
+
+    if(colonnes1 > colonnes2) return ERREUR_TAILLE;
+
+    *p_colonnes = colonnes2 - colonnes1;
+    *p_lignes = lignes2 - lignes1;
+
+    //int tempMatrice[MAX_HAUTEUR][MAX_LARGEUR] = {0};
+
+    for(unsigned int i = lignes1; i < lignes2; i++){
+        for(unsigned j = colonnes1; j < colonnes2; j++){
+            //tempMatrice[i-lignes1][j-colonnes1] = matrice[i][j];
+            matrice[i - lignes1][j - colonnes1] = matrice[i][j];
+        }
+    }
+    //matrice = tempMatrice;
+    return OK;
+
+
+
+    
+}
 
 int main()
 {
