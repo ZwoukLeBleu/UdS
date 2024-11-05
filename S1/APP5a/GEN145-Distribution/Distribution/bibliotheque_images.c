@@ -64,11 +64,12 @@ int pgm_lire(char nom_fichier[], int matrice[MAX_HAUTEUR][MAX_LARGEUR],
         return ERREUR_FORMAT; 
     }
 
-    size_t result_data;
+    int result_data;
     for (int i = 0; i < *p_lignes; i++){
         for (int j = 0; j < *p_colonnes; j++){
             //printf("core\n");
-            result_data += fscanf(pgm, "%d", &matrice[i][j]);
+            fscanf(pgm, "%d", &matrice[i][j]);
+            result_data += 1;
             //printf("%d\n", matrice[i][j]);
         }
         
