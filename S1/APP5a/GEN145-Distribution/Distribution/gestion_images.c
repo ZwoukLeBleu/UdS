@@ -35,12 +35,14 @@ int main()
 
     printf("-> Debut!\n");
 
-    int test = pgm_lire(nom_fichier, image1, &lignes1, &colonnes1, &maxval, &metadonnees);
-    int test2 = pgm_pivoter90(image1, &lignes1, &colonnes1, SENS_HORAIRE);
-    printf("test: %d\n", test2);
-    pgm_ecrire("/home/zwouklebleu/Documents/Prg/UdS/S1/APP5a/GEN145-Distribution/Distribution/test.pgm", image1, lignes1, colonnes1, maxval, metadonnees);
-
-
+    pgm_lire(nom_fichier, image1, &lignes1, &colonnes1, &maxval, &meta);
+    int test = pgm_extraire(image1, 50, 50, 175, 175, &lignes2, &colonnes2);
+    pgm_ecrire("/home/zwouklebleu/Documents/Prg/UdS/S1/APP5a/GEN145-Distribution/Distribution/test.pgm", image1, lignes1, colonnes1, maxval, meta);
+    /*ppm_lire(nom_fichier, imageRGB1, &lignes1, &colonnes1, &maxval, &meta);
+    int test = ppm_pivoter90(imageRGB1, &lignes1, &colonnes1, SENS_ANTIHORAIRE);
+    ppm_ecrire("/home/zwouklebleu/Documents/Prg/UdS/S1/APP5a/GEN145-Distribution/Distribution/test.ppm", imageRGB1, lignes1, colonnes1, maxval, meta);
+*/
+    printf("%d", test);
 
     printf("-> Fin!\n");
 
