@@ -1,0 +1,30 @@
+* C:\users\zwouklebleu\Documents\Prg\UdS\S1\APP6\app6 test1.asc
+V2 V12 0 12
+V3 0 V-12 12
+R2 test 0 100k
+C1 TP1 test 680n
+R5 N002 0 1k
+R4 N002 V12 35k
+R3 N001 V12 5600
+C2 TP3 TP2 10n
+R6 N006 TP3 1.5k
+R7 TP3 N007 7.5k
+D1 0 N006 1N4148
+D2 N007 0 1N4148
+R9 N003 0 1k
+R8 V12 N003 2k
+D3 TP4 N004 1N4148
+R10 TP5 N004 1.3k
+C3 TP5 0 1µ
+R11 TP5 NC_01 200
+R1 N005 TP1 40
+XU1 TP1 N002 V12 V-12 TP2 ADA4000
+XU2 TP3 N003 V12 V-12 TP4 ADA4000
+L1 N005 0 20m
+V1 test 0 PULSE(0 12 1m 1n 1n 5m 10m 1)
+.model D D
+.lib C:\users\zwouklebleu\Documents\LTspiceXVII\lib\cmp\standard.dio
+.tran 0 0.007 0 0.00001 startup
+.lib ADI.lib
+.backanno
+.end

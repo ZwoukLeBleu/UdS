@@ -60,6 +60,10 @@ int pgm_ecrire(char nom_fichier[], int matrice[MAX_HAUTEUR][MAX_LARGEUR],
                int lignes, int colonnes, 
                int maxval, struct MetaData metadonnees)
 {
+    if (colonnes > MAX_HAUTEUR || colonnes < 0 || lignes > MAX_LARGEUR || lignes < 0){
+        return ERREUR_TAILLE;
+    }
+    
     FILE *pgm = NULL;
     pgm = fopen(nom_fichier, "w");
     //metadata
