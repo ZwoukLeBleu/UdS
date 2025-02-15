@@ -1,0 +1,7 @@
+{
+    "cmake.sourceDirectory": "/home/zwouklebleu/Documents/Prg/UdS/S2/Projet/serial",
+    "files.associations": {
+        "iostream": "cpp",
+        "ostream": "cpp"
+    }
+}

@@ -1,0 +1,40 @@
+#******************************************************
+# makefile No 2 du programme rectv1 (16 juin 2024)
+# compilation separee simple.
+#******************************************************
+# Atelier APP exercice no.2 
+#   But principal:
+#      construire le programme rectv1
+#   But secondaires:
+#      make clean
+#******************************************************
+# 
+# NOTE: Utiliser la commande suivante pour appeler un makefile ayant un nom specifique
+#    make -f makefile_OUTDIR
+# 
+# But principal:
+#   construire programme rectv1 dans le répertoire /test
+# But secondaires:
+#   utiliser la commande @echo "..." pour afficher un message dans le terminal
+#   make clean
+
+# OPTIONEL: Macro avec nom de dossier en sortie
+OUTDIR = ./test
+	
+rectv1:  rectv1.o  rectangle.o 	
+	mkdir -p $(OUTDIR)
+	g++ -o $(OUTDIR)/rectv1 rectv1.o rectangle.o
+	
+#
+rectv1.o: rectv1.cpp rectangle.h
+	g++ rectv1.cpp -g -c
+#
+rectangle.o: rectangle.cpp rectangle.h
+	g++ rectangle.cpp -g -c
+#
+clean:
+	@echo "*ECHO: Clean .o files"
+	rm  -f *.o
+
+#
+# fin du makefile

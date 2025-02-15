@@ -1,0 +1,109 @@
+TESTS APPLICATION (CAS 01)
+ETAPE 1 :
+----- Aucune couche -----
+ETAPE 2 : Aire : 0
+ETAPE 3 : 
+3.0 : true
+3.1 : true
+3.2 : true
+3.3 : true
+3.4 : true
+ETAPE 4 : 
+----- Couche 0 -----
+Etat : active
+Couche : vide
+----- Couche 1 -----
+Etat : initialisee
+Couche : vide
+----- Couche 2 -----
+Etat : initialisee
+Couche : vide
+----- Couche 3 -----
+Etat : initialisee
+Couche : vide
+----- Couche 4 -----
+Etat : initialisee
+Couche : vide
+ETAPE 5 : AIRE : 0
+ETAPE 6 : true
+ETAPE 6.1 : Cercle (r=5, x=0, y=1). Success? : true
+ETAPE 6.2 : Carre (c=6, x=1, y=2). Success? : true
+ETAPE 6.3 : Rectangle (l=4, h=9, x=2, y=3). Success? : true
+ETAPE 7 : true
+ETAPE 7.1 : Rectangle (l=12, h=3, x=0, y=0). Success? : true
+ETAPE 8 : 
+----- Couche 0 -----
+Etat : inactive
+Couche : vide
+----- Couche 1 -----
+Etat : active
+Rectangle (x=0, y=0, l=12, h=3, aire=36)
+----- Couche 2 -----
+Etat : inactive
+Cercle (x=0, y=1, r=5, aire=78.5398)
+Carre (x=1, y=2, c=6, aire=36)
+Rectangle (x=2, y=3, l=4, h=9, aire=36)
+----- Couche 3 -----
+Etat : initialisee
+Couche : vide
+----- Couche 4 -----
+Etat : initialisee
+Couche : vide
+ETAPE 9 : AIRE : 186.54
+ETAPE 10 : true
+ETAPE 10.1 : Rectangle (l=1, h=1, x=0, y=0). Success? : true
+ETAPE 10.2 : Carre (c=1, x=0, y=0). Success? : true
+ETAPE 10.2 : Cercle (c=1, x=0, y=0). Success? : true
+ETAPE 11 : true
+ETAPE 12 : 
+----- Couche 0 -----
+Etat : inactive
+Rectangle (x=0, y=0, l=1, h=1, aire=1)
+Carre (x=0, y=0, c=1, aire=1)
+Cercle (x=0, y=0, r=1, aire=3.14159)
+----- Couche 1 -----
+Etat : inactive
+Rectangle (x=0, y=0, l=12, h=3, aire=36)
+----- Couche 2 -----
+Etat : active
+Cercle (x=2, y=2, r=5, aire=78.5398)
+Carre (x=3, y=3, c=6, aire=36)
+Rectangle (x=4, y=4, l=4, h=9, aire=36)
+----- Couche 3 -----
+Etat : initialisee
+Couche : vide
+----- Couche 4 -----
+Etat : initialisee
+Couche : vide
+ETAPE 13 : AIRE :191.681
+ETAPE 14 : true
+ETAPE 15 : true
+ETAPE 16 : true
+ETAPE 17 : true
+ETAPE 18 : false
+ETAPE 19 : 
+----- Couche 0 -----
+Etat : inactive
+Rectangle (x=0, y=0, l=1, h=1, aire=1)
+Cercle (x=0, y=0, r=1, aire=3.14159)
+----- Couche 1 -----
+Etat : initialisee
+Couche : vide
+----- Couche 2 -----
+Etat : initialisee
+Couche : vide
+----- Couche 3 -----
+Etat : initialisee
+Couche : vide
+ETAPE 20 : AIRE : 4.14159
+ETAPE 21 : true
+ETAPE 22 : 
+----- Aucune couche -----
+ETAPE 23 : AIRE : 0
+ETAPE 24 : false
+ETAPE 24.1 : false
+ETAPE 24.2 : false
+ETAPE 25 : false
+ETAPE 26 : 
+----- Aucune couche -----
+ETAPE 27 : AIRE : 0
