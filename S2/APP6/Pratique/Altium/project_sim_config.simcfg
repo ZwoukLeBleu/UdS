@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ProjectConfig xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <Settings>
+    <Version>1.1</Version>
+    <Affect />
+  </Settings>
+  <Config />
+  <Documents>
+    <DocumentConfig>
+      <Name>Sheet1.SchDoc</Name>
+      <Id>IMDYGJVN</Id>
+      <Config />
+      <Results>
+        <ResultConfig>
+          <Name>DC Sweep</Name>
+          <Description />
+          <Type>DC Sweep</Type>
+          <Date>2025-03-28 04:22:02Z</Date>
+          <IsLocked>false</IsLocked>
+          <Charts />
+        </ResultConfig>
+        <ResultConfig>
+          <Name>Transient Analysis</Name>
+          <Description />
+          <Type>Transient Analysis</Type>
+          <Date>2025-03-28 04:22:03Z</Date>
+          <IsLocked>false</IsLocked>
+          <Charts />
+        </ResultConfig>
+        <ResultConfig>
+          <Name>Operating Point</Name>
+          <Description />
+          <Type>Operating Point</Type>
+          <Date>2025-03-28 04:22:02Z</Date>
+          <IsLocked>false</IsLocked>
+          <Charts />
+        </ResultConfig>
+        <ResultConfig>
+          <Name>AC Analysis</Name>
+          <Description />
+          <Type>AC Analysis</Type>
+          <Date>2025-03-28 04:22:03Z</Date>
+          <IsLocked>false</IsLocked>
+          <Charts />
+        </ResultConfig>
+      </Results>
+    </DocumentConfig>
+  </Documents>
+  <Results />
+</ProjectConfig>
