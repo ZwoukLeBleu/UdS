@@ -1,3 +1,4 @@
+
 #include "vector.h"
 #include <iostream>
 
@@ -59,8 +60,6 @@ std::ostream& operator<<(std::ostream& os, const Vector<T>& vec) {
     os << "]";
     return os;
 }
-
-
 
 
 template <typename T>
